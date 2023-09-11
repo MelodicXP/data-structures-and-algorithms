@@ -71,12 +71,23 @@ Then, write a function named `speaker` that takes in an array of strings and a c
 Use `forEach` to build a new array of strings, each string modified by the callback. Return the new array.
 ------------------------------------------------------------------------------------------------ */
 
+// Function takes single string and returns string all caps with '!'
 const greeting = (word) => {
-  // Solution code here...
+  let capitalizedWord = word.toUpperCase() + '!';
+  return capitalizedWord;
 };
 
-const speaker = (words, callback) => {
-  // Solution code here...
+// Function takes array of strings and returns array of strings all caps with '!'
+const speaker = (words, greeting) => { // Takes array of strings and function 'greeting' as arguments
+
+  let modifiedStrings = []; // Create local array
+
+  words.forEach ( (arrWord) => {
+    let modifiedWord = greeting(arrWord); // Invoke greeting function to modify string.
+    modifiedStrings.push(modifiedWord);
+  });
+
+  return modifiedStrings; // Return local array
 };
 
 /* ------------------------------------------------------------------------------------------------
