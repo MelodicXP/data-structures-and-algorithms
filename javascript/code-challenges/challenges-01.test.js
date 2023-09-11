@@ -110,7 +110,7 @@ const addValues = (arr, value) => {
   arr.push(value);
 };
 
-// Solution using a 'for loop'
+// Solution using a 'for loop' (preferred by me)
 // const addNumbers = (num, arr, times, addValues) => {
 
 //   for (let i = 0; i < times; i++) {
@@ -121,7 +121,7 @@ const addValues = (arr, value) => {
 
 // };
 
-// Solution using forEach()
+// Solution using forEach() (was challenging using forEach())
 const addNumbers = (num, arr, times, addValues) => {
   const modifiedArray = arr.slice(); // Make a copy of arr
 
