@@ -9,6 +9,7 @@ Write a function named raisedToTheThird that takes in an array of numbers and re
 ------------------------------------------------------------------------------------------------ */
 
 const raisedToTheThird = (arr) => {
+
   let powThird = [];
 
   arr.forEach(element => {
@@ -17,6 +18,7 @@ const raisedToTheThird = (arr) => {
   });
 
   return powThird;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -26,7 +28,12 @@ Write a function named addOne that, given an array of numbers, uses map to retur
 ------------------------------------------------------------------------------------------------ */
 
 const addOne = (arr) => {
-  // Solution code here...
+
+  let addOneArray = arr.map( (number) => {
+    return number + 1;
+  });
+
+  return addOneArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
