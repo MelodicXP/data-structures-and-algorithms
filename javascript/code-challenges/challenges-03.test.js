@@ -70,7 +70,16 @@ For example, oddValues([1,2,3]) returns [1,3].
 ------------------------------------------------------------------------------------------------ */
 
 const oddValues = (arr) => {
-  // Solution code here...
+
+  let newArray = arr.filter( (value) => {
+
+    // If value returns true (doesn't equal 0 after diving by two) return value
+    return value % 2 !== 0;
+
+  });
+
+  return newArray;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -82,7 +91,16 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 ------------------------------------------------------------------------------------------------ */
 
 const notInFirstArray = (forbiddenValues, arr) => {
-  // Solution code here...
+
+  let newArray = arr.filter( (value) => {
+
+    // Check if values from arr are not '!' included in forbiddenValues array
+    return !forbiddenValues.includes(value);
+
+  });
+
+  return newArray;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -125,7 +143,16 @@ const snorlaxData = {
 };
 
 const getBaseStatGreaterThan = (arr, minBaseStat) => {
-  // Solution code here...
+
+  let newArray = arr.filter( (stat) => {
+
+    // Return any data with basestate
+    return stat.baseStat > minBaseStat;
+
+  });
+
+
+  return newArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -273,7 +300,7 @@ describe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should return an array containing the stats that are greater than the input', () => {
     expect(getBaseStatGreaterThan(snorlaxData.stats, 75)).toStrictEqual([ { stat: { url: 'https://pokeapi.co/api/v2/stat/5/', name: 'special-defense' }, effort: 2, baseStat: 110 } ]);
     expect(getBaseStatGreaterThan(snorlaxData.stats, 75).length).toStrictEqual(1);
