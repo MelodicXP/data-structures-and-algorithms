@@ -80,10 +80,19 @@ const forLoopTwoToThe = (arr) => {
 CHALLENGE 5
 
 Write a function named forEachTwoToThe that produces the same output as your forLoopTwoToThe function from challenge 4, but uses forEach instead of a for loop.
------------------------------------------------------------------------------------------------- */
+-------------------------------------{---------------------------------------------------------- */
 
 const forEachTwoToThe = (arr) => {
-  // Solution code here...
+
+  let twoToTheArr = [];
+
+  arr.forEach( (number) => {
+    let twoToTheNum = Math.pow(2, number);
+    twoToTheArr.push(twoToTheNum);
+  });
+
+  return twoToTheArr;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -93,7 +102,11 @@ Write a function named mapTwoToThe that produces the same output as your forLoop
 ------------------------------------------------------------------------------------------------ */
 
 const mapTwoToThe = (arr) => {
-  // Solution code here...
+
+  let twoToTheArr = arr.map(num => Math.pow(2, num));
+
+  return twoToTheArr;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
