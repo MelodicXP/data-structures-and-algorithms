@@ -146,7 +146,7 @@ const getBaseStatGreaterThan = (arr, minBaseStat) => {
 
   let newArray = arr.filter( (stat) => {
 
-    // Return any data with basestate
+    // Return entire object if baseStat of object is greater than minBaseStat
     return stat.baseStat > minBaseStat;
 
   });
@@ -164,7 +164,19 @@ For example, getStatName(snorlaxData.stats, 50) will return ['special-defense', 
 ------------------------------------------------------------------------------------------------ */
 
 const getStatName = (arr, minBaseStat) => {
-  // Solution code here...
+
+  // Store filtered states in filteredStats array using getBaseStatsGreatherThan function
+  let filteredStats = getBaseStatGreaterThan(arr, minBaseStat);
+
+  // Retrieve name of stats only from filteredStats array
+  let statNames = filteredStats.map ( (stat) => {
+
+    return stat.stat.name;
+
+  });
+
+
+  return statNames;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -217,7 +229,18 @@ const characters = [
 ];
 
 const getCharactersWithoutChildren = (arr) => {
-  // Solution code here...
+
+
+  // Write a function named getCharactersWithoutChildren that, given the array of characters, below, uses filter to return an array of all characters without children.
+  let newArray = arr.filter( (character) => {
+
+    // Return all objects that do not have children (if !character.children evaluates to true)
+    return !character.children;
+
+  });
+
+
+  return newArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -229,7 +252,22 @@ For example: evenOddNumericValues(['Gregor', 2, 4, 1]) returns ['even', 'even', 
 ------------------------------------------------------------------------------------------------ */
 
 const evenOddNumericValues = (arr) => {
-  // Solution code here...
+
+  let noStringArray = arr.filter( (value) => {
+
+    // Filter out and return values equal to a number into noStringArray
+    return typeof value === 'number';
+
+  });
+
+  let evenOddArray = noStringArray.map ( (value) => {
+
+    // Return even or odd strings according to numeric value from noStringArray
+    return value % 2 === 0 ? 'even' : 'odd';
+
+  });
+
+  return evenOddArray; // Return array of strings with even or odd
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -311,7 +349,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should return the name of the stats that exceed that maximum', () => {
     expect(getStatName(snorlaxData.stats, 50)).toStrictEqual([ 'special-defense', 'special-attack' ]);
     expect(getStatName(snorlaxData.stats, 50).length).toStrictEqual(2);
@@ -332,14 +370,14 @@ xdescribe('Testing challenge 7', () => {
   });
 });
 
-xdescribe('Testing challenge 8', () => {
+describe('Testing challenge 8', () => {
   test('It should return an array containing characters who do not have children', () => {
     expect(getCharactersWithoutChildren(characters)).toStrictEqual([ { name: 'Sansa', spouse: 'Tyrion', house: 'Stark' }, { name: 'Jon', spouse: null, house: 'Snow' } ]);
     expect(getCharactersWithoutChildren(characters).length).toStrictEqual(2);
   });
 });
 
-xdescribe('Testing challenge 9', () => {
+describe('Testing challenge 9', () => {
   test('It should remove non-integers and return "even" or "odd', () => {
     expect(evenOddNumericValues(['Gregor', 2, 4, 1])).toStrictEqual(['even', 'even', 'odd']);
     expect(evenOddNumericValues(['Gregor', 2, 4, 1]).length).toStrictEqual(3);
