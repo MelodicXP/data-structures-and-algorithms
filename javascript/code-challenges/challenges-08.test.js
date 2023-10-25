@@ -167,6 +167,7 @@ Do not use the vertical bar (pipe) in your pattern.
 
 const matchMonth = (input) => {
   let regex = /^(October|Oct|october|oct)$/g;
+
   return regex.test(input); // Return true or false if regex matches
 };
 
