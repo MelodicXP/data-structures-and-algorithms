@@ -10,7 +10,7 @@ Write a function called reverseArray which takes an array as an argument. Withou
 
 I am inexperienced with whiteboarding at the moment.  The approach taken was similar to instruction which was defining problem domain, test cases, visualization, algorithm, big O, code, and finally step through.
 
-The Big O is:
+**The Big O is:**
 
 * time: O(n)
 * space: O(1)
