@@ -14,4 +14,3 @@ The approach taken was similar to instruction which was defining problem domain,
 
 * time: O(n) - due to a single loop iterating over each element once.
 * space: O(n) - because of the new array that stores n + 1 elements (n from the original array and one additional element).
-
