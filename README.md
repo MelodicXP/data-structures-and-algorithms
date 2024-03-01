@@ -26,3 +26,4 @@ Table of Contents
 - [Array Insert Shift](./javascript/arrayInsertShift/README.md)
 - [Linked Lists](./javascript/linked-list/README.md)
 - [Array Binary Search](./javascript/arrayBinarySearch/README.md)
+- [Linked Lists - kth from end](./javascript/linked-list/README.md)
