@@ -108,6 +108,33 @@ class LinkedList {
     }
     return false; // Value not found after traversing list
   }
+
+  kthFromEnd(k) {
+    let current = this.head;
+    let length = 0;
+    // First, traverse the whole list to find out its length
+    while (current) {
+      length++;
+      current = current.next;
+    }
+
+    // If k is out of the bounds of the list, return null or a message
+    if (k < 0 || k >= length) {
+      return 'k is out of the bounds of the linked list';
+    }
+
+    // Calculate the position from the start (0-indexed)
+    let target = length - k - 1;
+    current = this.head;
+    // Traverse again to find the kth node from the end
+    for (let i = 0; i < target; i++) {
+      current = current.next;
+    }
+
+    // Return the value of the kth node from the end
+    return current.value;
+  }
+
 }
 
 

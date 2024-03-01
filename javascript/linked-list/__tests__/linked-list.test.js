@@ -151,5 +151,46 @@ describe('Linked List', () => {
     expect(current.next).toBeNull();
   });
 
+  it('checks if k is out of bounds of linked list', () => {
+    const linked = new LinkedList();
+    linked.append('apple');
+    linked.append('banana');
+    linked.append('carrot');
+    expect(linked.kthFromEnd(4)).toEqual('k is out of the bounds of the linked list'); // Assuming method returns this message for out-of-bound k
+  });
+
+  it('checks if k and the length of the list are the same', () => {
+    const linked = new LinkedList();
+    linked.append('apple');
+    linked.append('banana');
+    linked.append('carrot');
+    // Since k is 0-based, if k is the same as list length, it should be out of bounds
+    expect(linked.kthFromEnd(3)).toEqual('k is out of the bounds of the linked list');
+  });
+
+  it('checks if k is NOT a positive integer', () => {
+    const linked = new LinkedList();
+    linked.append('apple');
+    linked.append('banana');
+    linked.append('carrot');
+    expect(linked.kthFromEnd(-1)).toEqual('k is out of the bounds of the linked list');
+  });
+
+  it('handles when linked list is of size 1', () => {
+    const linked = new LinkedList();
+    linked.append('apple');
+    // k=0 should return the only node when the list size is 1
+    expect(linked.kthFromEnd(0)).toEqual('apple');
+  });
+
+  it('checks where k is not at the end, but somewhere in the middle of the linked list', () => {
+    const linked = new LinkedList();
+    linked.append('apple');
+    linked.append('banana');
+    linked.append('carrot');
+    linked.append('date');
+    // Assuming list is [apple, banana, carrot, date] and k=1, should return "carrot" (1 node from the end)
+    expect(linked.kthFromEnd(1)).toEqual('carrot');
+  });
 });
 
