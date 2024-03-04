@@ -41,10 +41,18 @@
     * arguments: value, new value
     * adds a new node with the given new value immediately after the first node that has the value specified
 
+* Write the following method for the Linked List class:
+
+  * kth from end
+    * argument: a number, k, as a parameter.
+    * Return the node’s value that is k places from the tail of the linked list.
+    * You have access to the Node class and all the properties on the Linked List class as well as the methods created in previous challenges.
+
 ## Whiteboard process
 
 ![linked list whiteboard](../assets/linked-lists-whiteboard.png)
 ![linked list insertions whiteboard](../assets/linked-list-insertions.png)
+![linked list kth from end whiteboard](../assets/linked-lists-kth-whiteboard.png)
 
 ## Approach and Efficiency
 
@@ -72,3 +80,17 @@ The approach taken was similar to instruction which was defining problem domain,
   * **Why**: You may need to traverse the list to find the target node after which to insert the new node. Like `insertBefore`, this operation's time complexity is linear with the list's length.
 * **Space Complexity**: O(1)
   * **Why**: Regardless of the list's size, this operation also only creates one new node, maintaining a constant space complexity.
+
+### 4. `kthFromEnd(k)`
+
+### Time Complexity: O(n)
+
+* **First Pass**: The method traverses the entire linked list to calculate its length, which is O(n), where `n` is the number of nodes in the list.
+* **Second Pass**: After calculating the length, the method performs a second traversal to reach the node that is `k` positions from the end. In the worst-case scenario (e.g., when `k` is 0, and looking for the last element), this can also involve traversing nearly the entire list.
+* **Overall**: Since both traversals are sequential and not nested, the overall time complexity remains O(n). The constant factor is roughly 2.
+
+### Space Complexity: O(1)
+
+* **Variables**: The space complexity is determined by the extra space needed aside from the input. For this algorithm, only a fixed number of variables are used (`current`, `length`, `target`), regardless of the input size.
+* **No Additional Data Structures**: The method does not use any additional data structures that grow with the size of the input. The space required for the variables is constant and does not depend on the size of the linked list.
+* **Overall**: The space complexity is O(1), indicating constant space usage.
