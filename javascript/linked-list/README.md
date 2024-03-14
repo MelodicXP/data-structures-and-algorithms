@@ -48,11 +48,20 @@
     * Return the node’s value that is k places from the tail of the linked list.
     * You have access to the Node class and all the properties on the Linked List class as well as the methods created in previous challenges.
 
+* Write a function called zip lists
+
+  * Arguments: 2 linked lists
+  * Return: New Linked List, zipped as noted below
+  * Zip the two linked lists together into one so that the nodes alternate between the two lists and return a reference to the the zipped list.
+  * Try and keep additional space down to O(1)
+  * You have access to the Node class and all the properties on the Linked List class as well as the methods created in previous challenges.
+
 ## Whiteboard process
 
 ![linked list whiteboard](../assets/linked-lists-whiteboard.png)
 ![linked list insertions whiteboard](../assets/linked-list-insertions.png)
 ![linked list kth from end whiteboard](../assets/linked-lists-kth-whiteboard.png)
+![linked list zip whiteboard](../assets/linked-lists-zipped-whiteboard.png)
 
 ## Approach and Efficiency
 
@@ -94,3 +103,9 @@ The approach taken was similar to instruction which was defining problem domain,
 * **Variables**: The space complexity is determined by the extra space needed aside from the input. For this algorithm, only a fixed number of variables are used (`current`, `length`, `target`), regardless of the input size.
 * **No Additional Data Structures**: The method does not use any additional data structures that grow with the size of the input. The space required for the variables is constant and does not depend on the size of the linked list.
 * **Overall**: The space complexity is O(1), indicating constant space usage.
+
+### 5. `function zipLists(list1, list2)`
+
+* **Time Complexity: O(n)**: The time complexity is O(n), where n is the number of elements in the shorter of the two linked lists. This is because the function iterates through both lists simultaneously until one of them ends. The loop inside the function runs for each pair of elements from the two lists until reaching the end of one of the lists. Hence, the time complexity is linear with respect to the length of the shorter list, as the loop might not iterate through all elements if one list is significantly longer than the other.
+
+* **Space Complexity: O(1)**: The space complexity is O(1), which means it requires constant space regardless of the input size. This is because the function only uses a fixed number of variables (current1, current2, next1, next2) and does not allocate any additional structures or lists that grow with the input size. The zipping is done in-place by adjusting the pointers in the existing nodes of the lists.

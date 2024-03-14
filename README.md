@@ -27,3 +27,4 @@ Table of Contents
 - [Linked Lists](./javascript/linked-list/README.md)
 - [Array Binary Search](./javascript/arrayBinarySearch/README.md)
 - [Linked Lists - kth from end](./javascript/linked-list/README.md)
+- [Zipped Linked Lists](./javascript/linked-list/README.md)
