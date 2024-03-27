@@ -19,5 +19,10 @@ list2.append(6);
 // Zip the lists
 const zippedList = zipLists(list1, list2);
 
-// Display the zipped list
+// Display the zipped list and reversed list
 console.log('Zipped List:', zippedList.toString());
+
+// Reverse List
+zippedList.reverseLinkedList();
+
+console.log('Reversed List:', zippedList.toString());

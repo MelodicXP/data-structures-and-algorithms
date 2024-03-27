@@ -135,6 +135,19 @@ class LinkedList {
     return current.value;
   }
 
+  reverseLinkedList() {
+    let previous = null;
+    let current = this.head;
+    let next = null;
+
+    while(current !== null) {
+      next = current.next;
+      current.next = previous;
+      previous = current;
+      current = next;
+    }
+    this.head = previous;
+  }
 }
 
 function zipLists(list1, list2) {
