@@ -192,5 +192,16 @@ describe('Linked List', () => {
     // Assuming list is [apple, banana, carrot, date] and k=1, should return "carrot" (1 node from the end)
     expect(linked.kthFromEnd(1)).toEqual('carrot');
   });
+
+  it('reverses a linked list', () => {
+    const linked = new LinkedList();
+    linked.append('apple');
+    linked.append('banana');
+    linked.append('carrot');
+    linked.append('date');
+    // Assuming list is [apple, banana, carrot, date] and k=1, should return "carrot" (1 node from the end)
+    linked.reverseLinkedList();
+    expect(linked.kthFromEnd(1)).toEqual('banana');
+  });
 });
 
