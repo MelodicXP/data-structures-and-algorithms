@@ -60,6 +60,53 @@
   * No arguments, in place.
   * No return, reverses list in place
 
+## Stack and Queue
+
+Using a Linked List as the underlying data storage mechanism, implement both a Stack and a Queue
+
+* Node
+  * Create a Node class that has properties for the value stored in the Node, and a pointer to the next node.
+* Stack
+  * Create a Stack class that has a top property. It creates an empty Stack when instantiated.
+    * This object should be aware of a default empty value assigned to top when the stack is created.
+    * The class should contain the following methods:
+    * push
+      * Arguments: value
+      * adds a new node with that value to the top of the stack with an O(1) Time performance.
+    * pop
+      * Arguments: none
+      * Returns: the value from node from the top of the stack
+      * Removes the node from the top of the stack
+      * Should raise exception when called on empty stack
+    * peek
+      * Arguments: none
+      * Returns: Value of the node located at the top of the stack
+      * Should raise exception when called on empty stack
+    * is empty
+      * Arguments: none
+      * Returns: Boolean indicating whether or not the stack is empty.
+* Queue
+  * Create a Queue class that has a front property. It creates an empty Queue when instantiated.
+    * This object should be aware of a default empty value assigned to front when the queue is created.
+    * The class should contain the following methods:
+    * enqueue
+      * Arguments: value
+      * adds a new node with that value to the back of the queue with an O(1) Time performance.
+    * dequeue
+      * Arguments: none
+      * Returns: the value from node from the front of the queue
+      * Removes the node from the front of the queue
+      * Should raise exception when called on empty queue
+    * peek
+      * Arguments: none
+      * Returns: Value of the node located at the front of the queue
+      * Should raise exception when called on empty stack
+    * is empty
+      * Arguments: none
+      * Returns: Boolean indicating whether or not the queue is empty
+
+You have access to the Node class and all the properties on the Linked List class.
+
 ## Whiteboard process
 
 ![linked list whiteboard](../assets/linked-lists-whiteboard.png)
@@ -120,3 +167,55 @@ The approach taken was similar to instruction which was defining problem domain,
 * **Time Complexity: O(n)**: Each node in the list is visited exactly once. No matter the length of the list, every node's next pointer is reversed, ensuring that the loop runs for each element exactly once. If there are n nodes, the loop performs n iterations, making the time complexity linear, or O(n).
 
 * **Space Complexity: O(1)**: The space required does not grow with the size of the input list. Only three pointers used (previous, current, and next), regardless of the list's length. This constant space requirement, not influenced by the list size, results in a method with a space complexity of O(1).
+
+## Stack - Approach and Efficiency
+
+### push(value)
+
+**Time Complexity: O(1):** This method inserts a new node at the head of the linked list, which is an operation that takes constant time. It doesn't matter how many items are in the stack; inserting at the head is always done in a fixed amount of steps.
+
+**Space Complexity: O(1):** Inserting a new element requires creating a new node, which takes constant space. The method does not allocate any additional space that grows with the size of the input or stack size.
+
+### pop()
+
+**Time Complexity: O(1):** Removing an item from the top of the stack involves just a few operations: accessing the head of the linked list, reassigning the head to the next node, and updating the top property. All these operations are performed in constant time.
+
+**Space Complexity: O(1):** This method does not use any additional space that grows with the size of the input or stack size. The space required for the operations is constant, regardless of the stack's size.
+
+### peek()
+
+**Time Complexity: O(1):** This method returns the value of the top node without modifying the stack. Accessing the top node's value is a constant time operation as it involves a direct reference with no need to traverse the stack.
+
+**Space Complexity: O(1):** Similar to pop(), peek() does not allocate additional space based on the input size or stack size. It only accesses existing data, so the space complexity is constant.
+
+### isEmpty()
+
+**Time Complexity: O(1):** This method checks whether the stack is empty by comparing the top property to null. This is a straightforward, constant time operation since it requires just one step regardless of the stack size.
+
+**Space Complexity: O(1):** Checking if the stack is empty does not require additional space that depends on the stack size. The operation uses a fixed amount of space, making its space complexity constant.
+
+## Queue - Approachand efficiency
+
+### enqueue(value)
+
+**Time Complexity: O(1)**: This method adds a new node to the back of the queue. Thanks to the maintenance of a back pointer, appending a new node does not require traversing the entire queue, making this operation constant time regardless of the queue's size.
+
+**Space Complexity: O(1)**: Creating a new node and updating pointers requires constant space. Although the overall space used by the queue increases with each added element, the space required for the operation itself does not depend on the size of the queue.
+
+### dequeue()
+
+**Time Complexity: O(1)**: Removing an item from the front of the queue is a constant time operation because it involves merely reassigning the front pointer to the next node in the queue and potentially resetting the back pointer if the queue becomes empty.
+
+**Space Complexity: O(1)**: This method does not allocate any additional space that grows with the size of the input or queue size. The operation's space requirement is constant, independent of the queue's size.
+
+### peek() - queue
+
+**Time Complexity: O(1)**: This method returns the value at the front of the queue without modifying the queue. Accessing this value is a constant time operation since it involves directly referencing the front node, with no need to traverse the queue.
+
+**Space Complexity: O(1)**: Similar to dequeue(), peek() does not allocate additional space based on the input size or queue size. It accesses existing data, so the space complexity remains constant.
+
+### isEmpty() - queue
+
+**Time Complexity: O(1)**: Checking if the queue is empty is accomplished by comparing the front property to null. This operation is performed in constant time, as it requires only a single step, irrespective of the queue's size.
+
+**Space Complexity: O(1)**: This method does not require additional space that depends on the queue's size. The operation uses a fixed amount of space, making its space complexity constant.
