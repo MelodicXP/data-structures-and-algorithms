@@ -56,12 +56,17 @@
   * Try and keep additional space down to O(1)
   * You have access to the Node class and all the properties on the Linked List class as well as the methods created in previous challenges.
 
+* Write a function to reverse a singly linked list
+  * No arguments, in place.
+  * No return, reverses list in place
+
 ## Whiteboard process
 
 ![linked list whiteboard](../assets/linked-lists-whiteboard.png)
 ![linked list insertions whiteboard](../assets/linked-list-insertions.png)
 ![linked list kth from end whiteboard](../assets/linked-lists-kth-whiteboard.png)
 ![linked list zip whiteboard](../assets/linked-lists-zipped-whiteboard.png)
+![linked list reverse order whiteboard](../assets/linked-list-reversed.png)
 
 ## Approach and Efficiency
 
@@ -109,3 +114,9 @@ The approach taken was similar to instruction which was defining problem domain,
 * **Time Complexity: O(n)**: The time complexity is O(n), where n is the number of elements in the shorter of the two linked lists. This is because the function iterates through both lists simultaneously until one of them ends. The loop inside the function runs for each pair of elements from the two lists until reaching the end of one of the lists. Hence, the time complexity is linear with respect to the length of the shorter list, as the loop might not iterate through all elements if one list is significantly longer than the other.
 
 * **Space Complexity: O(1)**: The space complexity is O(1), which means it requires constant space regardless of the input size. This is because the function only uses a fixed number of variables (current1, current2, next1, next2) and does not allocate any additional structures or lists that grow with the input size. The zipping is done in-place by adjusting the pointers in the existing nodes of the lists.
+
+### 6. `function reverseLinkedList()`
+
+* **Time Complexity: O(n)**: Each node in the list is visited exactly once. No matter the length of the list, every node's next pointer is reversed, ensuring that the loop runs for each element exactly once. If there are n nodes, the loop performs n iterations, making the time complexity linear, or O(n).
+
+* **Space Complexity: O(1)**: The space required does not grow with the size of the input list. Only three pointers used (previous, current, and next), regardless of the list's length. This constant space requirement, not influenced by the list size, results in a method with a space complexity of O(1).
