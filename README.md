@@ -29,3 +29,5 @@ Table of Contents
 - [Linked Lists - kth from end](./javascript/linked-list/README.md)
 - [Zipped Linked Lists](./javascript/linked-list/README.md)
 - [Reverse Linked Lists](./javascript/linked-list/README.md)
+- [Stack](./javascript/linked-list/README.md)
+- [Queue](./javascript/linked-list/README.md)
