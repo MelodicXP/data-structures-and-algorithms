@@ -107,6 +107,20 @@ Using a Linked List as the underlying data storage mechanism, implement both a S
 
 You have access to the Node class and all the properties on the Linked List class.
 
+## Pseudo Queue
+
+* Create a new class called pseudo queue.
+  * Do not use an existing Queue.
+  * Instead, this PseudoQueue class will implement our standard queue interface (the two methods listed below),
+  * Internally, utilize 2 Stack instances to create and manage the queue
+* Methods:
+  * enqueue
+    * Arguments: value
+    * Inserts a value into the PseudoQueue, using a first-in, first-out approach.
+  * dequeue
+    * Arguments: none
+    * Extracts a value from the PseudoQueue, using a first-in, first-out approach.
+
 ## Whiteboard process
 
 ![linked list whiteboard](../assets/linked-lists-whiteboard.png)
@@ -114,6 +128,7 @@ You have access to the Node class and all the properties on the Linked List clas
 ![linked list kth from end whiteboard](../assets/linked-lists-kth-whiteboard.png)
 ![linked list zip whiteboard](../assets/linked-lists-zipped-whiteboard.png)
 ![linked list reverse order whiteboard](../assets/linked-list-reversed.png)
+![pseudo queue using stacks](../assets/pseudo-queue-whiteboard.png)
 
 ## Approach and Efficiency
 
@@ -194,7 +209,7 @@ The approach taken was similar to instruction which was defining problem domain,
 
 **Space Complexity: O(1):** Checking if the stack is empty does not require additional space that depends on the stack size. The operation uses a fixed amount of space, making its space complexity constant.
 
-## Queue - Approachand efficiency
+## Queue - Approach and efficiency
 
 ### enqueue(value)
 
@@ -219,3 +234,17 @@ The approach taken was similar to instruction which was defining problem domain,
 **Time Complexity: O(1)**: Checking if the queue is empty is accomplished by comparing the front property to null. This operation is performed in constant time, as it requires only a single step, irrespective of the queue's size.
 
 **Space Complexity: O(1)**: This method does not require additional space that depends on the queue's size. The operation uses a fixed amount of space, making its space complexity constant.
+
+## PseudoQueue Using Stacks - Approach and efficiency
+
+### enqueue(value) - pseudoQueue
+
+**Time Complexity: O(1):** Adding a new element to the queue via the enqueue method involves pushing the element onto the top of the inboundStack. Since stack push operations take constant time, independent of the stack's size, the time complexity of the enqueue method is O(1).
+
+**Space Complexity: O(1):** The space required for pushing an element onto the stack is constant. Although the overall space used by the queue increases with each added element, the space required for the operation itself is independent of the size of the queue.
+
+### dequeue() - pseudoQueue
+
+**Time Complexity: Amortized O(1), Worst-case O(n)**: The dequeue method involves preparing the outboundStack by transferring elements from the inboundStack if the outboundStack is empty. This preparation step, prepareOutBoundStack, has a worst-case time complexity of O(n) when all elements must be transferred from inboundStack to outboundStack. However, because each element is transferred at most twice (once to inboundStack and once to outboundStack) and then popped once, the amortized time complexity for each element over a series of operations is O(1).
+
+**Space Complexity: O(n):** The space complexity for maintaining the elements in the queue is O(n), where n is the number of elements in the queue. This space is required to hold all elements in the two stacks (inboundStack and outboundStack). The operation itself does not allocate additional space that grows with the size of the input or queue size, but the total space used by the queue is proportional to the number of elements it contains.

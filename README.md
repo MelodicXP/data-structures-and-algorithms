@@ -31,3 +31,4 @@ Table of Contents
 - [Reverse Linked Lists](./javascript/linked-list/README.md)
 - [Stack](./javascript/linked-list/README.md)
 - [Queue](./javascript/linked-list/README.md)
+- [PseudoQueue using Stacks](./javascript/linked-list/README.md)
