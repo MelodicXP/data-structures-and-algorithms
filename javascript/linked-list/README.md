@@ -129,6 +129,7 @@ You have access to the Node class and all the properties on the Linked List clas
 ![linked list zip whiteboard](../assets/linked-lists-zipped-whiteboard.png)
 ![linked list reverse order whiteboard](../assets/linked-list-reversed.png)
 ![pseudo queue using stacks](../assets/pseudo-queue-whiteboard.png)
+![stack queue animal shelter](../AnimalShelter/AnimalShelter.js)
 
 ## Approach and Efficiency
 
@@ -248,3 +249,17 @@ The approach taken was similar to instruction which was defining problem domain,
 **Time Complexity: Amortized O(1), Worst-case O(n)**: The dequeue method involves preparing the outboundStack by transferring elements from the inboundStack if the outboundStack is empty. This preparation step, prepareOutBoundStack, has a worst-case time complexity of O(n) when all elements must be transferred from inboundStack to outboundStack. However, because each element is transferred at most twice (once to inboundStack and once to outboundStack) and then popped once, the amortized time complexity for each element over a series of operations is O(1).
 
 **Space Complexity: O(n):** The space complexity for maintaining the elements in the queue is O(n), where n is the number of elements in the queue. This space is required to hold all elements in the two stacks (inboundStack and outboundStack). The operation itself does not allocate additional space that grows with the size of the input or queue size, but the total space used by the queue is proportional to the number of elements it contains.
+
+## Stack-Queue Animal Shelter
+
+### enqueue(animal)
+
+**Time Complexity: O(1):** The enqueue method checks the species of the animal and enqueues it to the corresponding queue (dogs or cats). The time complexity of the queue's enqueue method is typically O(1) because adding an item to the end of a queue is a constant time operation, assuming that the underlying data structure supports efficient addition.
+
+**Space Complexity: O(1):** Each call to enqueue only handles one animal at a time, and the space needed for adding an animal to a queue is constant. The space complexity for the operation itself does not depend on the number of animals already in the shelter.
+
+### dequeue(preference)
+
+**Time Complexity: Amortized O(1)**: The dequeue method performs several conditional checks to determine from which queue (either dogs or cats) an animal should be dequeued. Since all these operations (including checking if the queue is empty, comparing creation times, and actually dequeuing from the queue) are constant time operations, the overall time complexity of the dequeue method is O(1).
+
+**Space Complexity: O(n):** The dequeue method does not allocate any additional significant space that scales with the input size. The space used for temporary variables (like checking which animal has been in the queue longer) is constant.
