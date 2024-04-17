@@ -32,3 +32,4 @@ Table of Contents
 - [Stack](./javascript/linked-list/README.md)
 - [Queue](./javascript/linked-list/README.md)
 - [PseudoQueue using Stacks](./javascript/linked-list/README.md)
+- [Stack Queue Animal Shelter](./javascript/linked-list/README.md)
