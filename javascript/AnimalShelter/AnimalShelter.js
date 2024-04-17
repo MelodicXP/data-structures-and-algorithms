@@ -16,9 +16,9 @@ class AnimalShelter {
     this.cats = new Queue();
   }
   enqueue(animal) {
-    if (animal.species === 'dog') {
+    if(this.isDog(animal)) {
       this.dogs.enqueue(animal);
-    } else if (animal.species === 'cat') {
+    } else if (this.isCat(animal)) {
       this.cats.enqueue(animal);
     } else {
       throw new Error('Animal must be either a dog or a cat');
@@ -26,17 +26,37 @@ class AnimalShelter {
   }
   dequeue(pref) {
     if (pref === 'dog') {
-      return this.dogs.isEmpty() ? null : this.dogs.dequeue();
+      return this.dequeueDog();
     } else if (pref === 'cat') {
-      return this.cats.isEmpty() ? null : this.cats.dequeue();
+      return this.dequeueCat();
     } else {
-      if (this.dogs.isEmpty() && this.cats.isEmpty()) {
-        return null;
-      } else if (!this.dogs.isEmpty() && (this.cats.isEmpty() || this.dogs.peek().creationTime < this.cats.peek().creationTime)) {
-        return this.dogs.dequeue();
-      } else {
-        return this.cats.dequeue();
-      }
+      return this.dequeueAny();
+    }
+  }
+
+  isDog(animal) {
+    return animal.species === 'dog';
+  }
+
+  isCat(animal) {
+    return animal.species === 'cat';
+  }
+
+  dequeueDog() {
+    return this.dogs.isEmpty() ? null : this.dogs.dequeue();
+  }
+
+  dequeueCat() {
+    return this.cats.isEmpty() ? null : this.cats.dequeue();
+  }
+
+  dequeueAny() {
+    if (this.dogs.isEmpty() && this.cats.isEmpty()) {
+      return null;
+    } else if (!this.dogs.isEmpty() && (this.cats.isEmpty() || this.dogs.peek().creationTime < this.cats.peek().creationTime)) {
+      return this.dogs.dequeue();
+    } else {
+      return this.cats.dequeue();
     }
   }
 }
