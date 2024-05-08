@@ -130,6 +130,7 @@ You have access to the Node class and all the properties on the Linked List clas
 ![linked list reverse order whiteboard](../assets/linked-list-reversed.png)
 ![pseudo queue using stacks](../assets/pseudo-queue-whiteboard.png)
 ![stack queue animal shelter](../AnimalShelter/AnimalShelter.js)
+![stack queue bracket](../assets/stack-queue-brackets.png)
 
 ## Approach and Efficiency
 
