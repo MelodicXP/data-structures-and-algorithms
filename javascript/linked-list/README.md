@@ -131,6 +131,7 @@ You have access to the Node class and all the properties on the Linked List clas
 ![pseudo queue using stacks](../assets/pseudo-queue-whiteboard.png)
 ![stack queue animal shelter](../AnimalShelter/AnimalShelter.js)
 ![stack queue bracket](../assets/stack-queue-brackets.png)
+![max stack](../assets/max-stack-whiteboard.png)
 
 ## Approach and Efficiency
 
@@ -284,5 +285,23 @@ The approach taken was similar to instruction which was defining problem domain,
 **Space Complexity: O(n):**
 
 * The primary space usage in the function comes from the Stack, which stores characters from the string.
+
 * In the worst-case scenario (all characters in the string are opening brackets), the stack could grow linearly with the size of the input string as each character is pushed onto the stack. Therefore, the space complexity in the worst case is O(n), where n is the length of the string.
+
 * No additional significant space is used outside of the input storage and the stack. The bracketPairs object uses a constant amount of space, and temporary variables within the loop also use a constant amount of space.
+
+## Max-Stack
+
+### getMax()
+
+**Time Complexity: O(1):**
+
+* Constant Time Access: The getMax function retrieves the maximum value directly from the top of the maxStack. Accessing the head of a linked list (or the top of a stack) is a constant time operation, O(1), because it simply reads a value from a known memory address (the head node).
+
+* No Iteration or Conditional Logic: The function does not involve any loops or complex conditional checks that depend on the size of the stack. The retrieval is independent of the number of elements in the stack, making the operation constant time.
+
+**Space Complexity: O(1):**
+
+* No Additional Space Used: The getMax function does not allocate any additional space that scales with the input size. It merely returns a value that is already stored in the maxStack.
+
+* Stack Usage: The function uses a fixed amount of space on the call stack for its execution, which does not depend on the size of the data structure or the input. Therefore, it is considered to have a space complexity of O(1).
