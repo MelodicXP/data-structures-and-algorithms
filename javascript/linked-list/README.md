@@ -263,3 +263,25 @@ The approach taken was similar to instruction which was defining problem domain,
 **Time Complexity: Amortized O(1)**: The dequeue method performs several conditional checks to determine from which queue (either dogs or cats) an animal should be dequeued. Since all these operations (including checking if the queue is empty, comparing creation times, and actually dequeuing from the queue) are constant time operations, the overall time complexity of the dequeue method is O(1).
 
 **Space Complexity: O(n):** The dequeue method does not allocate any additional significant space that scales with the input size. The space used for temporary variables (like checking which animal has been in the queue longer) is constant.
+
+## Stack-queue-brackets
+
+### validateBrackets(stringArgument)
+
+**Time Complexity: O(n):**
+
+* The function iterates over each character in the input string once, where n is the length of the string.
+
+* For each character, the function performs a constant-time operation:
+  * If the character is an opening bracket, it is pushed onto the stack. The push operation typically takes constant time, O(1).
+  * If the character is a closing bracket, the function checks if the stack is empty (isEmpty method, O(1)) and possibly pops the top element from the stack (pop method, also O(1)) to check for a matching bracket.
+
+* The use of Object.values(bracketPairs).includes(char) could potentially introduce a higher time complexity due to iterating over the bracket pairs to determine if char is a closing bracket. However, since the number of bracket types is fixed and small (three pairs), this operation can be considered O(1) in practice, although in a strict interpretation without assuming a fixed set of bracket types, it could be considered O(k) where k is the number of bracket types.
+
+* Summing these operations up, each iteration involves a constant number of O(1) operations, making the overall time complexity O(n) for the function.
+
+**Space Complexity: O(n):**
+
+* The primary space usage in the function comes from the Stack, which stores characters from the string.
+* In the worst-case scenario (all characters in the string are opening brackets), the stack could grow linearly with the size of the input string as each character is pushed onto the stack. Therefore, the space complexity in the worst case is O(n), where n is the length of the string.
+* No additional significant space is used outside of the input storage and the stack. The bracketPairs object uses a constant amount of space, and temporary variables within the loop also use a constant amount of space.
