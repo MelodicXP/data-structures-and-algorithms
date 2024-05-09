@@ -35,3 +35,4 @@ Table of Contents
 - [Stack Queue Animal Shelter](./javascript/linked-list/README.md)
 - [Stack Queue Brackets](./javascript/linked-list/README.md)
 - [Stack Queue Brackets](./javascript/linked-list/README.md)
+- [Binary Search Trees](./javascript/trees/README.md)
