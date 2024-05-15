@@ -13,15 +13,22 @@
     * post order()
   * Each depth first traversal method should return an array of values, ordered appropriately.
 
+* Write the following method for the Binary Tree class
+
+  * find maximum value
+    * Arguments: none
+    * Returns: number
+
 ### Whiteboard process Binary Tree
 
 ![binary tree](../assets/binary-search-tree.png)
+![findMaxValue](../assets/find-max-value-binary-tree.png)
 
 ### Approach and Efficiency Binary Tree
 
 The approach taken was similar to instruction which was defining problem domain, writing test first, coding to run the tests on, and refactoring if necessary.
 
-### **Big O - Binary Tree**
+### Big O - Binary Tree
 
 **Time Complexity - O(n):**
 Each of the methods in Binary Tree Class involves a traversal that visits each node exactly once. The time complexity is therefore linear relative to the number of nodes in the binary tree. This applies regardless of the specific type of depth-first traversal (pre-order, in-order, or post-order). Each node's value is processed, and the traversal calls itself recursively for the left and right children if they exist.
@@ -34,6 +41,16 @@ In the worst case: The space complexity is primarily determined by two factors:
 * The list preOrderResults, inOrderResults, or postOrderResults that collects the node values.
 
 In a skewed tree (where each node has only one child), the recursive call stack can grow to O(n), where n is the number of nodes.
+
+#### findMaxValue() method
+
+**Time Complexity - O(n):**
+
+* A binary tree with n nodes, the algorithm will visit each node once.
+
+**Space Complexity - O(n):**
+
+* The maximum memory used will be proportional to the number of nodes in the worst case.
 
 ## Binary Search Tree
 
