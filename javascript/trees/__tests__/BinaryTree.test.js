@@ -43,5 +43,41 @@ describe('BinaryTree', () => {
       const expectedPostOrder = [1, 7, 5, 20, 15, 10];
       expect(tree.getPostOrderResults()).toEqual(expectedPostOrder);
     });
+
+    test('findMaxValue returns the correct maximum value', () => {
+      expect(tree.findMaxValue()).toBe(20);
+    });
+  });
+
+  describe('findMaxValue on different tree configurations', () => {
+    test('findMaxValue returns -Infinity for an empty tree', () => {
+      tree = new BinaryTree();
+      expect(tree.findMaxValue()).toBe(-Infinity);
+    });
+
+    test('findMaxValue returns the root value for a single node tree', () => {
+      tree = new BinaryTree();
+      tree.root = new Node(42);
+      expect(tree.findMaxValue()).toBe(42);
+    });
+
+    test('findMaxValue handles a tree with negative values', () => {
+      tree = new BinaryTree();
+      tree.root = new Node(-10);
+      tree.root.left = new Node(-20);
+      tree.root.right = new Node(-5);
+      tree.root.left.left = new Node(-30);
+      expect(tree.findMaxValue()).toBe(-5);
+    });
+
+    test('findMaxValue handles a tree with mixed positive and negative values', () => {
+      tree = new BinaryTree();
+      tree.root = new Node(10);
+      tree.root.left = new Node(-20);
+      tree.root.right = new Node(15);
+      tree.root.left.left = new Node(-30);
+      tree.root.right.right = new Node(20);
+      expect(tree.findMaxValue()).toBe(20);
+    });
   });
 });
