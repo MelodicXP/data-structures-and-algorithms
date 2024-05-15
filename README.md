@@ -36,3 +36,4 @@ Table of Contents
 - [Stack Queue Brackets](./javascript/linked-list/README.md)
 - [Stack Queue Brackets](./javascript/linked-list/README.md)
 - [Binary Search Trees](./javascript/trees/README.md)
+- [Find Max Value](./javascript/trees/README.md)

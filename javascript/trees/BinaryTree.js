@@ -67,6 +67,31 @@ class BinaryTree {
     traverseTree(this.root);
     return postOrderResults;
   }
+
+  // Find the maximum value in a binary tree
+  findMaxValue() {
+    let maxValue = -Infinity;
+
+    const traverseTree = (node) => {
+      if (node.value > maxValue) {
+        maxValue = node.value;
+      }
+
+      if (node.left) {
+        traverseTree(node.left);
+      }
+      if (node.right) {
+        traverseTree(node.right);
+      }
+    };
+
+    // Start recursive function from root
+    if (this.root) {
+      traverseTree(this.root);
+    }
+
+    return maxValue;
+  }
 }
 
 module.exports = {
