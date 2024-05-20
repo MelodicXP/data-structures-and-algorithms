@@ -92,9 +92,37 @@ class BinaryTree {
 
     return maxValue;
   }
+
+  // Method for breadth first traversal
+  breadthFirst() {
+
+    // If root is null, there is no tree, return empty array
+    if(this.root === null) {
+      return [];
+    }
+
+    let queueOfNodesToVisit = [this.root]; // Initialize queue with root node
+    let resultsOfBreadthTraversal = []; // Store results of breadth first traversal
+
+    while (queueOfNodesToVisit.length > 0 ) {
+      let currentNode = queueOfNodesToVisit.shift(); // Remove node at front of queue (dequeue)
+      resultsOfBreadthTraversal.push(currentNode.value); // Add value of node to results list
+
+      // Add to queue children of current node if they exist
+      if (currentNode.left) {
+        queueOfNodesToVisit.push(currentNode.left);
+      }
+      if (currentNode.right) {
+        queueOfNodesToVisit.push(currentNode.right);
+      }
+    }
+
+    return resultsOfBreadthTraversal;
+  }
 }
 
 module.exports = {
   BinaryTree,
   Node
 };
+
