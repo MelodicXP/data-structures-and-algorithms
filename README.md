@@ -38,3 +38,4 @@ Table of Contents
 - [Binary Search Trees](./javascript/trees/README.md)
 - [Find Max Value](./javascript/trees/README.md)
 - [Breadth first traversal](./javascript/trees/README_BreadthFirst.md)
+- [Fizz Buzz Tree](./javascript/trees/README_FizzBuzz.md)
