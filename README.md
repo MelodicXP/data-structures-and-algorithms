@@ -40,3 +40,4 @@ Table of Contents
 - [Breadth first traversal](./javascript/trees/README_BreadthFirst.md)
 - [Fizz Buzz Tree](./javascript/trees/README_FizzBuzz.md)
 - [Sum Odd Values in BST](./javascript/trees/README_bstSumOfOddValues.md)
+- [Insertion Sort](./javascript/sorting/insertion/README.md)
