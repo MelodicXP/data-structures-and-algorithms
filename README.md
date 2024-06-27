@@ -41,3 +41,4 @@ Table of Contents
 - [Fizz Buzz Tree](./javascript/trees/README_FizzBuzz.md)
 - [Sum Odd Values in BST](./javascript/trees/README_bstSumOfOddValues.md)
 - [Insertion Sort](./javascript/sorting/insertion/README.md)
+- [Merge Sort](./javascript/sorting/merge/README.md)
