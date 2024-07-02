@@ -49,4 +49,10 @@ let sortedMoviesByTitle = sortByTitleIgnoringArticles(Movies);
 console.log('Movies sorted by title (ignoring leading articles): ');
 console.log(sortedMoviesByTitle);
 
+module.exports = {
+  sortByMostRecent,
+  sortByTitleIgnoringArticles,
+  removeLeadingArticles
+};
+
 
