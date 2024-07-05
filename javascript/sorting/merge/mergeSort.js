@@ -56,7 +56,6 @@ let merge = (left, right, arr) => {
     j++;
     k++;
   }
-
 };
 
 // Example usage:
@@ -75,3 +74,8 @@ console.log(mergeSort);
 let nearlySorted =  [2,3,5,7,13,11];
 mergeSort(nearlySorted);
 console.log(nearlySorted);
+
+module.exports = {
+  mergeSort,
+  merge
+};
