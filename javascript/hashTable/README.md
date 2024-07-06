@@ -23,7 +23,7 @@
 
 ### Whiteboard process HashTable
 
-![Hash Table Class](../assets/hashTableClassCodeChallenge30.png);
+![Hash Table Class](../assets/hashClassCodeChallenge30.png);
 
 ### Big O - HashTable Class
 
