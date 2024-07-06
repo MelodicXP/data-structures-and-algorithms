@@ -42,3 +42,4 @@ Table of Contents
 - [Sum Odd Values in BST](./javascript/trees/README_bstSumOfOddValues.md)
 - [Insertion Sort](./javascript/sorting/insertion/README.md)
 - [Merge Sort](./javascript/sorting/merge/README.md)
+- [Hash Tables](./javascript/hashTable/README.md)
