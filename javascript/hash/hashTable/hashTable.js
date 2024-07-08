@@ -82,24 +82,24 @@ class HashTable {
 
 }
 
-const hashTable = new HashTable();
+// const hashTable = new HashTable();
 
-// Adding key-value pairs
-hashTable.set('Greenwood', '98103');
-hashTable.set('Downtown', '98101');
-hashTable.set('Alki Beach', '98116');
+// // Adding key-value pairs
+// hashTable.set('Greenwood', '98103');
+// hashTable.set('Downtown', '98101');
+// hashTable.set('Alki Beach', '98116');
 
-// Retrieving values
-console.log(hashTable.get('Greenwood')); // Output: 98103
-console.log(hashTable.get('Downtown')); // Output: 98101
-console.log(hashTable.get('Alki Beach')); // Output: 98116
+// // Retrieving values
+// console.log(hashTable.get('Greenwood')); // Output: 98103
+// console.log(hashTable.get('Downtown')); // Output: 98101
+// console.log(hashTable.get('Alki Beach')); // Output: 98116
 
-// Checking if a key exists
-console.log(hashTable.has('Greenwood')); // Output: true
-console.log(hashTable.has('Unknown')); // Output: false
+// // Checking if a key exists
+// console.log(hashTable.has('Greenwood')); // Output: true
+// console.log(hashTable.has('Unknown')); // Output: false
 
-// Getting all keys
-console.log(hashTable.keys()); // Output: ["Greenwood", "Downtown", "Alki Beach"]
+// // Getting all keys
+// console.log(hashTable.keys()); // Output: ["Greenwood", "Downtown", "Alki Beach"]
 
 module.exports = { HashTable };
 
