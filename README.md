@@ -44,3 +44,4 @@ Table of Contents
 - [Merge Sort](./javascript/sorting/merge/README.md)
 - [Hash Tables](./javascript/hash/hashTable/README.md)
 - [HashMap Repeated Word](./javascript/hash/hashMapRepeatedWord/README.md)
+- [Tree Intersection](./javascript/treeIntersection/README.md)
