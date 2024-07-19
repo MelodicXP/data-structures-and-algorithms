@@ -45,3 +45,4 @@ Table of Contents
 - [Hash Tables](./javascript/hash/hashTable/README.md)
 - [HashMap Repeated Word](./javascript/hash/hashMapRepeatedWord/README.md)
 - [Tree Intersection](./javascript/treeIntersection/README.md)
+- [Left Joins](./javascript//hash/leftJoins/README.md)
