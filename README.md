@@ -46,3 +46,4 @@ Table of Contents
 - [HashMap Repeated Word](./javascript/hash/hashMapRepeatedWord/README.md)
 - [Tree Intersection](./javascript/treeIntersection/README.md)
 - [Left Joins](./javascript//hash/leftJoins/README.md)
+- [Most Common Word](./javascript/hash/mostCommonWord/README.md)
