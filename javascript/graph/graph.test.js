@@ -59,4 +59,25 @@ describe('Graph', () => {
   test('Adding an edge between non-existent vertices should throw an error', () => {
     expect(() => graph.addEdge('A', 'B')).toThrow('Both vertices must be added to the graph before adding an edge.');
   });
+
+  test('Breadth-first traversal returns nodes in the correct order', () => {
+    // Setup graph
+    graph.addVertex('A');
+    graph.addVertex('B');
+    graph.addVertex('C');
+    graph.addVertex('D');
+    graph.addVertex('E');
+
+    graph.addEdge('A', 'B'); // A - B
+    graph.addEdge('A', 'C'); // A - C
+    graph.addEdge('B', 'D'); // B - D
+    graph.addEdge('C', 'E'); // C - E
+
+    // Perform BFS starting from 'A'
+    const traversalOrder = graph.breadthFirstTraverseGraph('A');
+
+    // Verify the traversal order matches BFS expectations
+    expect(traversalOrder).toEqual(['A', 'B', 'C', 'D', 'E']);
+  });
+
 });
