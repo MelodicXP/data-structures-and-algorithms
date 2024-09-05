@@ -40,9 +40,50 @@ class Graph {
   size() {
     return this.adjacencyList.size;
   }
+
+  // Method to traverse graph
+  breadthFirstTraverseGraph(startNode) {
+    // Queue to keep track of nodes to visit
+    let queueOfNodesToVisit = [];
+    // Map to keep track of visited nodes
+    let visitedNodes = new Map();
+    // Collection to store the order of nodes visited
+    let result = [];
+
+    // Add start node to queue
+    queueOfNodesToVisit.push(startNode);
+    // Mark start node as visited
+    visitedNodes.set(startNode, true);
+
+    // Traverse while there are nodes in the queue
+    while (queueOfNodesToVisit.length > 0) {
+      // Dequeue next node to visit
+      let currentNode = queueOfNodesToVisit.shift();
+
+      // Process current node
+      console.log(currentNode);
+      result.push(currentNode);
+
+      // Get neighbors of current node
+      let neighbors = this.getNeighbors(currentNode);
+
+      // Iterate through each neighbor
+      for (let neighbor of neighbors) {
+        // If the neighbor has not been visited
+        if (!visitedNodes.has(neighbor.vertex)) {
+          // Mark it as visited
+          visitedNodes.set(neighbor.vertex, true);
+          // Enqueue the neighbor for future traversal
+          queueOfNodesToVisit.push(neighbor.vertex);
+        }
+      }
+    }
+    // Return the collection of nodes in the order they were visited
+    return result;
+  }
 }
 
-module.exports = Graph ;
+module.exports = Graph;
 
 // Example usage and testing
 // const graph = new Graph();
