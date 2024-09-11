@@ -47,11 +47,21 @@ Write a function called business trip
 * Return: the cost of the trip (if it’s possible) or null (if not)
 * Determine whether the trip is possible with direct flights, and how much it would cost.
 
+### Depth First Traversal - Lab 38:
+
+Write the following method for the Graph class:
+
+* Name: Depth first
+* Arguments: Node (Starting point of search)
+* Return: A collection of nodes in their pre-order depth-first traversal order
+* Program output: Display the collection
+
 ### Whiteboard process Implement Graph
 
 ![Graph Lab 35](../assets/codeChallenge35.png);
 ![Graph Lab 36](../assets/codeChallenge36.png);
 ![Graph Lab 37](../assets/codeChallenge37.png);
+![Graph Lab 38](../assets/codeChallenge38.png);
 
 ### Big O - Graphs
 

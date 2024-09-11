@@ -80,4 +80,32 @@ describe('Graph', () => {
     expect(traversalOrder).toEqual(['A', 'B', 'C', 'D', 'E']);
   });
 
+  test('Depth-first traversal returns nodes in the correct order', () => {
+    // Setup graph
+    graph.addVertex('A');
+    graph.addVertex('B');
+    graph.addVertex('C');
+    graph.addVertex('D');
+    graph.addVertex('E');
+    graph.addVertex('F');
+    graph.addVertex('G');
+    graph.addVertex('H');
+
+    graph.addEdge('A', 'B'); // A - B
+    graph.addEdge('A', 'D'); // A - D
+    graph.addEdge('B', 'D'); // B - D
+    graph.addEdge('B', 'C'); // B - C
+    graph.addEdge('C', 'G'); // C - G
+    graph.addEdge('D', 'F'); // D - F
+    graph.addEdge('D', 'H'); // D - H
+    graph.addEdge('D', 'E'); // D - E
+    graph.addEdge('F', 'H'); // F - H
+
+    // Perform BFS starting from 'A'
+    const traversalOrder = graph.depthFirstTraverseGraph('A');
+
+    // Verify the traversal order matches BFS expectations
+    expect(traversalOrder).toEqual(['A', 'D', 'E', 'H', 'F', 'B', 'C', 'G']); // Adjusted expected order
+  });
+
 });
