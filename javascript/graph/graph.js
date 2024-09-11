@@ -41,7 +41,7 @@ class Graph {
     return this.adjacencyList.size;
   }
 
-  // Method to traverse graph
+  // Method to breadth first traverse graph (uses a queue)
   breadthFirstTraverseGraph(startNode) {
     // Queue to keep track of nodes to visit
     let queueOfNodesToVisit = [];
@@ -78,6 +78,48 @@ class Graph {
         }
       }
     }
+    // Return the collection of nodes in the order they were visited
+    return result;
+  }
+
+  // Method to depth first traverse graph (uses a stack)
+  depthFirstTraverseGraph(startNode) {
+    // Stack to keep track of nodes to visit
+    let stackOfNodesToVisit = [];
+    // Map to keep track of visited nodes
+    let visitedNodes = new Map();
+    // Collection to store the order of nodes visited
+    let result = [];
+
+    // Add start node to stack
+    stackOfNodesToVisit.push(startNode);
+
+    // Traverse while there are nodes in the stack
+    while (stackOfNodesToVisit.length > 0) {
+      // Pop the next node to visit (LIFO behavior for DFS)
+      let currentNode = stackOfNodesToVisit.pop();
+
+      // Process current node only if it hasn't been visited
+      if (!visitedNodes.has(currentNode)) {
+        console.log(currentNode);
+        result.push(currentNode);
+
+        // Mark current node as visited
+        visitedNodes.set(currentNode, true);
+
+        // Get neighbors of current node
+        let neighbors = this.getNeighbors(currentNode);
+
+        // Iterate through each neighbor and add to the stack
+        // Push them in reverse order if you want to follow a specific left-to-right or right-to-left order
+        for (let neighbor of neighbors) {
+          if (!visitedNodes.has(neighbor.vertex)) {
+            stackOfNodesToVisit.push(neighbor.vertex);
+          }
+        }
+      }
+    }
+
     // Return the collection of nodes in the order they were visited
     return result;
   }
