@@ -39,10 +39,19 @@ Write the following method for the Graph class:
 * Return: A collection of nodes in the order they were visited.
 * Display the collection
 
+### Business Trip - Lab 37:
+
+Write a function called business trip
+
+* Arguments: graph, array of city names
+* Return: the cost of the trip (if it’s possible) or null (if not)
+* Determine whether the trip is possible with direct flights, and how much it would cost.
+
 ### Whiteboard process Implement Graph
 
 ![Graph Lab 35](../assets/codeChallenge35.png);
 ![Graph Lab 36](../assets/codeChallenge36.png);
+![Graph Lab 37](../assets/codeChallenge37.png);
 
 ### Big O - Graphs
 
