@@ -23,6 +23,12 @@ class Graph {
     this.adjacencyList.get(vertex2).push({ vertex: vertex1, weight });
   }
 
+  //get adjacencylist
+  getAdjacencyList() {
+    //return the key value paairs
+    return Array.from(this.adjacencyList.entries());
+  }
+
   // Method to get all vertices in the graph
   getVertices() {
     return Array.from(this.adjacencyList.keys());
