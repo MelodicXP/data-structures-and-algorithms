@@ -108,4 +108,35 @@ describe('Graph', () => {
     expect(traversalOrder).toEqual(['A', 'D', 'E', 'H', 'F', 'B', 'C', 'G']); // Adjusted expected order
   });
 
+  test('Lab 39 get adjacency list', () => {
+    // Setup graph
+    graph.addVertex('A');
+    graph.addVertex('B');
+    graph.addVertex('C');
+    graph.addVertex('D');
+    graph.addVertex('E');
+
+    graph.addEdge('A', 'B'); // A - B
+    graph.addEdge('A', 'E'); // A - E
+    graph.addEdge('B', 'C'); // B - C
+    graph.addEdge('B', 'D'); // B - D
+    graph.addEdge('C', 'D'); // C - D
+    graph.addEdge('D', 'E'); // D - E
+
+    // Get adjacency list
+    const adjacencyList = graph.getAdjacencyList();
+
+    // Expected adjacency list
+    const expectedAdjacencyList = [
+      ['A', [{ vertex: 'B', weight: 0 }, { vertex: 'E', weight: 0 }]],
+      ['B', [{ vertex: 'A', weight: 0 }, { vertex: 'C', weight: 0 }, { vertex: 'D', weight: 0 }]],
+      ['C', [{ vertex: 'B', weight: 0 }, { vertex: 'D', weight: 0 }]],
+      ['D', [{ vertex: 'B', weight: 0 }, { vertex: 'C', weight: 0 }, { vertex: 'E', weight: 0 }]],
+      ['E', [{ vertex: 'A', weight: 0 }, { vertex: 'D', weight: 0 }]],
+    ];
+
+    // Verify the adjacency list matches the expected structure
+    expect(adjacencyList).toEqual(expectedAdjacencyList);
+  });
+
 });
