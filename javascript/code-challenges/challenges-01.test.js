@@ -8,17 +8,13 @@ Write a function named `addOne` that takes an array of numbers, and returns a ne
 Use `forEach` to loop over the input array and work with each value.  Push the new value into a local array. Return the local array;
 ------------------------------------------------------------------------------------------------ */
 
-const addOne = (arr) => {
-
-  let resultOfAddOne = []; // Establish blank local array (see instructions)
-
-  arr.forEach( (arrValue) => {
-    let valuePlusOne = arrValue + 1; // Increment each value by 1
-    resultOfAddOne.push(valuePlusOne); // Push new value into local array
-  } );
-
-  return resultOfAddOne; // return local array data
-
+const addOne = (numsArray) => {
+  let outputArray = [];
+  numsArray.forEach((number) => {
+    number += 1;
+    outputArray.push(number);
+  });
+  return outputArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -29,16 +25,13 @@ Write a function named `addExclamation` that takes an array of strings, and retu
 Use `forEach` to loop over the input array. Modify each string, and add the updated value into a local array. Return the local array;
 ------------------------------------------------------------------------------------------------ */
 
-const addExclamation = (arr) => {
-
-  let addedExclamation = []; // Local array
-
-  arr.forEach ( (arrString) => {
-    let exclamationString = arrString + '!'; // Add exlamation to each string value in array
-    addedExclamation.push(exclamationString); // Push value with exclaimation to local array
+const addExclamation = (stringsArray) => {
+  let outputArray = [];
+  stringsArray.forEach((string) => {
+    let stringWithExclamationMark = string + '!';
+    outputArray.push(stringWithExclamationMark);
   });
-
-  return addedExclamation; // Return local array
+  return outputArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -49,16 +42,13 @@ Write a function named `allUpperCase` that takes an array of strings, and return
 Use `forEach` to loop over the input array. The modified strings should each be added into a local array. Return that local array.
 ------------------------------------------------------------------------------------------------ */
 
-const allUpperCase = (arr) => {
-  // Solution code here...
-  let allCapitalized = [];
-
-  arr.forEach ( (arrString) => {
-    let capitalizedString = arrString.toUpperCase();
-    allCapitalized.push(capitalizedString);
+const allUpperCase = (stringsArray) => {
+  let outputArray = [];
+  stringsArray.forEach((string) => {
+    let capitalizedString = string.toUpperCase();
+    outputArray.push(capitalizedString);
   });
-
-  return allCapitalized;
+  return outputArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -72,22 +62,19 @@ Use `forEach` to build a new array of strings, each string modified by the callb
 ------------------------------------------------------------------------------------------------ */
 
 // Function takes single string and returns string all caps with '!'
-const greeting = (word) => {
-  let capitalizedWord = word.toUpperCase() + '!';
-  return capitalizedWord;
+const greeting = (string) => {
+  let stringWithExclamationMark = string.toUpperCase() + '!';
+  return stringWithExclamationMark;
 };
 
 // Function takes array of strings and returns array of strings all caps with '!'
-const speaker = (words, greeting) => { // Takes array of strings and function 'greeting' as arguments
-
-  let modifiedStrings = []; // Create local array
-
-  words.forEach ( (arrWord) => {
-    let modifiedWord = greeting(arrWord); // Invoke greeting function to modify string.
-    modifiedStrings.push(modifiedWord);
+const speaker = (stringsArray, callbackFunction) => {
+  let outputArray = [];
+  stringsArray.forEach((string) => {
+    let stringWithExclamationMark = callbackFunction(string);
+    outputArray.push(stringWithExclamationMark);
   });
-
-  return modifiedStrings; // Return local array
+  return outputArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -106,32 +93,29 @@ Within the addNumbers function, invoke the callback function as many times as ne
 Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
-const addValues = (arr, value) => {
-  arr.push(value);
+const addValues = (array, value) => {
+  array.push(value);
 };
 
-// Solution using a 'for loop' (preferred by me)
-// const addNumbers = (num, arr, times, addValues) => {
-
-//   for (let i = 0; i < times; i++) {
-//     addValues(arr, num);
-//   }
-
-//   return arr;
-
-// };
-
 // Solution using forEach() (was challenging using forEach())
-const addNumbers = (num, arr, times, addValues) => {
-  const modifiedArray = arr.slice(); // Make a copy of arr
+const addNumbers = (value, array, numberOfTimesToAddValue, addValues) => {
+  let timesToAdd = Array.from({ length: numberOfTimesToAddValue}); // create new array with desired length filled with undefined values in order to iterate through it
+
+  timesToAdd.forEach(() => {
+    addValues(array, value);
+  });
+
+  return array;
+
+  // const modifiedArray = arr.slice(); // Make a copy of arr
 
   // Create an empty array 'times' in length and as iterates through array, execute addValues (adds num to modifiedArray)
   // Using the empty array as a 'counter' as a work-around to add values to modifiedArray (for loop is preferable though, see above)
-  Array.from({ length: times }).forEach(() => {
-    addValues(modifiedArray, num);
-  });
+  // Array.from({ length: times }).forEach(() => {
+  //   addValues(modifiedArray, num);
+  // });
 
-  return modifiedArray;
+  // return modifiedArray;
 };
 /* ------------------------------------------------------------------------------------------------
 
@@ -151,16 +135,16 @@ The inventory is formatted like this:
 This function should use forEach to populate your grocery list based on the store's inventory. If the item is available, add it to your list. Return the final list.
 ------------------------------------------------------------------------------------------------ */
 
-const createList = (availableItems) => {
-  let finalList = [];
+const createList = (currentStoreInventory) => {
+  let groceryList = [];
 
-  availableItems.forEach ( (item) => {
-    if (item.available === true) {
-      finalList.push(item.name);
+  currentStoreInventory.forEach ((item) => {
+    if (item.available) {
+      groceryList.push(item.name);
     }
   });
 
-  return finalList;
+  return groceryList;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -177,23 +161,36 @@ Iterate over the array using forEach to determine the output based on several ru
 Return the resulting output array.
 ------------------------------------------------------------------------------------------------ */
 
-const fizzbuzz = (arr) => {
+const fizzbuzz = (numsArray) => {
 
   let outputArray = [];
+  let Fizz = 'Fizz';
+  let Buzz = 'Buzz';
 
-  arr.forEach((num) => {
-
-    if (num % 3 === 0 && num % 5 === 0) {
-      outputArray.push('Fizz Buzz');
-    } else if (num % 3 === 0) {
-      outputArray.push('Fizz');
-    } else if (num % 5 === 0) {
-      outputArray.push('Buzz');
+  numsArray.forEach((number) => {
+    if (number % 3 === 0 && number % 5 === 0){
+      outputArray.push(`${Fizz} ${Buzz}`);
+    } else if (number % 5 === 0) {
+      outputArray.push(Buzz);
+    } else if (number % 3 === 0){
+      outputArray.push(Fizz);
     } else {
-      outputArray.push(num);
+      outputArray.push(number);
     }
-
   });
+  // arr.forEach((num) => {
+
+  //   if (num % 3 === 0 && num % 5 === 0) {
+  //     outputArray.push('Fizz Buzz');
+  //   } else if (num % 3 === 0) {
+  //     outputArray.push('Fizz');
+  //   } else if (num % 5 === 0) {
+  //     outputArray.push('Buzz');
+  //   } else {
+  //     outputArray.push(num);
+  //   }
+
+  // });
 
   return outputArray;
 
