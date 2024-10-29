@@ -9,16 +9,11 @@ Write a function named raisedToTheThird that takes in an array of numbers and re
 ------------------------------------------------------------------------------------------------ */
 
 const raisedToTheThird = (arr) => {
-
-  let powThird = [];
-
-  arr.forEach(element => {
-    element = Math.pow(element, 3);
-    powThird.push(element);
+  let newArray = [];
+  arr.forEach((number) => {
+    newArray.push(Math.pow(number, 3));
   });
-
-  return powThird;
-
+  return newArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -27,15 +22,7 @@ CHALLENGE 2
 Write a function named addOne that, given an array of numbers, uses map to return a new array with each value simply incremented by 1.
 ------------------------------------------------------------------------------------------------ */
 
-const addOne = (arr) => {
-
-  let addOneArray = arr.map( (number) => {
-    return number + 1;
-  });
-
-  return addOneArray;
-
-};
+const addOne = (arr) => arr.map((number) => number + 1);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -43,15 +30,7 @@ CHALLENGE 3
 Write a function named addQuestion that, given an array of strings, uses map to return a new array containing each string followed by a question mark character.
 ------------------------------------------------------------------------------------------------ */
 
-const addQuestion = (arr) => {
-
-  let addQuestionMarkArr = arr.map( (string) => {
-    return string + '?';
-  });
-
-  return addQuestionMarkArr;
-
-};
+const addQuestion = (arr) => arr.map((string) => string + '?');
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -64,16 +43,12 @@ For example, twoToThe([1,2,3]) returns [2,4,8] because 2 ^ 1 = 2, 2 ^ 2 = 4, and
 ------------------------------------------------------------------------------------------------ */
 
 const forLoopTwoToThe = (arr) => {
-
-  let twoToTheArr = [];
-
-  for ( let i = 0; i < arr.length; i++) {
-    let twoToTheNum = Math.pow(2, arr[i]);
-    twoToTheArr.push(twoToTheNum);
+  let newArray = [];
+  for (let number of arr) {
+    let powerValue = Math.pow(2, number);
+    newArray.push(powerValue);
   }
-
-  return twoToTheArr;
-
+  return newArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -83,16 +58,14 @@ Write a function named forEachTwoToThe that produces the same output as your for
 -------------------------------------{---------------------------------------------------------- */
 
 const forEachTwoToThe = (arr) => {
-
   let twoToTheArr = [];
 
-  arr.forEach( (number) => {
+  arr.forEach((number) => {
     let twoToTheNum = Math.pow(2, number);
     twoToTheArr.push(twoToTheNum);
   });
 
   return twoToTheArr;
-
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -101,13 +74,7 @@ CHALLENGE 6
 Write a function named mapTwoToThe that produces the same output as your forLoopTwoToThe function from challenge 4 and your forEachTwoToThe function from challenge 5, but uses map instead of a for loop or forEach.
 ------------------------------------------------------------------------------------------------ */
 
-const mapTwoToThe = (arr) => {
-
-  let twoToTheArr = arr.map(num => Math.pow(2, num));
-
-  return twoToTheArr;
-
-};
+const mapTwoToThe = (arr) => arr.map((num) => Math.pow(2, num));
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
@@ -119,18 +86,7 @@ Read the MDN documentation on String.charCodeAt() if necessary.
 For example: charCode(['h','i']) returns [104, 105].
 ------------------------------------------------------------------------------------------------ */
 
-const charCode = (arr) => {
-
-  let charCodeArr = arr.map((character) => {
-
-    let charCode = character.charCodeAt(0); // Use charCodeAt on the character variable
-    return charCode;
-
-  });
-
-  return charCodeArr;
-
-};
+const charCode = (arr) => arr.map((letter) => letter.charCodeAt());
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
@@ -142,33 +98,11 @@ If any element in the array is not a number, the resulting array should have the
 For example: evenOdd([1,2,3]) returns ['odd','even','odd'].
 ------------------------------------------------------------------------------------------------ */
 
-const evenOdd = (arr) => {
+const evenOdd = (arr) =>
+  arr.map((number) =>
+    isNaN(number) ? 'N/A' : number % 2 === 0 ? 'even' : 'odd'
+  );
 
-  let evenOrOddString = '';
-
-  let evenOddArr = arr.map( (string) => {
-
-    if (!isNaN(string)) {
-
-      if (string % 2 === 0) {
-        evenOrOddString = 'even';
-      } else {
-        evenOrOddString = 'odd';
-      }
-
-      return evenOrOddString;
-
-    } else {
-
-      let notApplicable = 'N/A';
-      return notApplicable;
-
-    }
-
-  });
-
-  return evenOddArr;
-};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 9 - Stretch Goal
@@ -212,19 +146,11 @@ const snorlaxAbilities = {
   weight: 4600,
 };
 
-const extractAbilities = (arr) => {
-
-  let ability = '';
-
-  let abilitiesArr = arr.map( (slot) => {
-
-    ability = slot.ability.name;
+const extractAbilities = (arr) =>
+  arr.map((abilitySlot) => {
+    let ability = abilitySlot.ability.name;
     return ability;
-
   });
-
-  return abilitiesArr;
-};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 10 - Stretch Goal
@@ -269,27 +195,12 @@ const snorlaxStats = {
   weight: 4600,
 };
 
-const extractStats = (arr) => {
-
-  let statNameTotalArr = arr.map( (stats) => {
-
-    let statName = '';
-    let totalStat;
-    let snorLaxObj = {};
-
-    statName = stats.stat.name;
-    snorLaxObj['name'] = statName;
-
-    totalStat = stats.effort + stats.baseStat;
-    snorLaxObj['total'] = totalStat;
-
-    return snorLaxObj;
-
+const extractStats = (arr) =>
+  arr.map((stats) => {
+    let stat = stats.stat.name;
+    let effortPlusBaseState = stats.effort + stats.baseStat;
+    return { name: stat, total: effortPlusBaseState }; // return object with properties and values
   });
-
-  return statNameTotalArr;
-
-};
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
@@ -304,7 +215,9 @@ Run your tests from the console: jest challenges-07.test.js
 
 describe('Testing challenge 1', () => {
   test('It should return a new array of numbers raised to the thrid power', () => {
-    expect(raisedToTheThird([2, 4, 5, -7, 0])).toStrictEqual([8, 64, 125, -343, 0]);
+    expect(raisedToTheThird([2, 4, 5, -7, 0])).toStrictEqual([
+      8, 64, 125, -343, 0,
+    ]);
   });
 });
 
@@ -316,7 +229,11 @@ describe('Testing challenge 2', () => {
 
 describe('Testing challenge 3', () => {
   test('It should add a question mark to the end of each string', () => {
-    expect(addQuestion(['hello', '301', 'students'])).toStrictEqual(['hello?', '301?', 'students?']);
+    expect(addQuestion(['hello', '301', 'students'])).toStrictEqual([
+      'hello?',
+      '301?',
+      'students?',
+    ]);
   });
 });
 
@@ -355,46 +272,82 @@ describe('Testing challenge 6', () => {
 
 describe('Testing challenge 7', () => {
   test('It should return an array containing the character code for each letter', () => {
-    expect(charCode(['C', 'o', 'd', 'e', '3', '0', '1'])).toStrictEqual([ 67, 111, 100, 101, 51, 48, 49 ]);
-    expect(charCode(['C', 'o', 'd', 'e', '3', '0', '1']).length).toStrictEqual(7);
+    expect(charCode(['C', 'o', 'd', 'e', '3', '0', '1'])).toStrictEqual([
+      67, 111, 100, 101, 51, 48, 49,
+    ]);
+    expect(charCode(['C', 'o', 'd', 'e', '3', '0', '1']).length).toStrictEqual(
+      7
+    );
   });
 });
 
 describe('Testing challenge 8', () => {
   test('It should return an array containing the keys from an object', () => {
-    expect(evenOdd([5, 8, 2, 6, 9, 13, 542, 541])).toStrictEqual([ 'odd', 'even', 'even', 'even', 'odd', 'odd', 'even', 'odd' ]);
+    expect(evenOdd([5, 8, 2, 6, 9, 13, 542, 541])).toStrictEqual([
+      'odd',
+      'even',
+      'even',
+      'even',
+      'odd',
+      'odd',
+      'even',
+      'odd',
+    ]);
     expect(evenOdd([5, 8, 2, 6, 9, 13, 542, 541]).length).toStrictEqual(8);
   });
 
   test('It should work with all odd numbers', () => {
-    expect(evenOdd([1, 3, 5, 7, 9])).toStrictEqual([ 'odd', 'odd', 'odd', 'odd', 'odd' ]);
+    expect(evenOdd([1, 3, 5, 7, 9])).toStrictEqual([
+      'odd',
+      'odd',
+      'odd',
+      'odd',
+      'odd',
+    ]);
     expect(evenOdd([1, 3, 5, 7, 9]).length).toStrictEqual(5);
   });
 
   test('It should work with all even numbers', () => {
-    expect(evenOdd([2, 4, 6, 8, 10])).toStrictEqual([ 'even', 'even', 'even', 'even', 'even' ]);
+    expect(evenOdd([2, 4, 6, 8, 10])).toStrictEqual([
+      'even',
+      'even',
+      'even',
+      'even',
+      'even',
+    ]);
     expect(evenOdd([2, 4, 6, 8, 10]).length).toStrictEqual(5);
   });
 
   test('It should return the string "N/A" if a non-number is included in the array', () => {
-    expect(evenOdd([5, 8, 2, 'hi'])).toStrictEqual([ 'odd', 'even', 'even', 'N/A' ]);
+    expect(evenOdd([5, 8, 2, 'hi'])).toStrictEqual([
+      'odd',
+      'even',
+      'even',
+      'N/A',
+    ]);
     expect(evenOdd([5, 8, 2, 'hi']).length).toStrictEqual(4);
   });
 });
 
 describe('Testing challenge 9', () => {
   test('It should return an array containing only the ability names', () => {
-    expect(extractAbilities(snorlaxAbilities.abilities)).toStrictEqual(['gluttony', 'cute charm', 'immunity']);
-    expect(extractAbilities(snorlaxAbilities.abilities).length).toStrictEqual(3);
+    expect(extractAbilities(snorlaxAbilities.abilities)).toStrictEqual([
+      'gluttony',
+      'cute charm',
+      'immunity',
+    ]);
+    expect(extractAbilities(snorlaxAbilities.abilities).length).toStrictEqual(
+      3
+    );
   });
 });
 
 describe('Testing challenge 10', () => {
   test('It should return an array containing objects with name and total values', () => {
     expect(extractStats(snorlaxStats.stats)).toStrictEqual([
-      { name: 'speed', total: 35, },
-      { name: 'special-defense', total: 112, },
-      { name: 'special-attack', total: 74, },
+      { name: 'speed', total: 35 },
+      { name: 'special-defense', total: 112 },
+      { name: 'special-attack', total: 74 },
     ]);
     expect(extractStats(snorlaxStats.stats).length).toStrictEqual(3);
   });
