@@ -7,16 +7,21 @@ Write a function called addTwo that takes in an array and adds two to every valu
 ------------------------------------------------------------------------------------------------ */
 
 const addTwo = (arr) => {
-
   let newArray = [];
-
-  for ( let i = 0; i < arr.length; i++) {
-
-    let addTwoSum = arr[i] + 2;
-    newArray.push(addTwoSum);
+  for (let i = 0; i < arr.length; i++) {
+    newArray.push(arr[i] + 2);
   }
-
   return newArray;
+
+  // let newArray = [];
+
+  // for ( let i = 0; i < arr.length; i++) {
+
+  //   let addTwoSum = arr[i] + 2;
+  //   newArray.push(addTwoSum);
+  // }
+
+  // return newArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -27,18 +32,10 @@ Write a function named typeNum that, given an array as input, uses filter to ret
 For example, typeNum([1, 'bob' ,3]) returns [1,3].
 ------------------------------------------------------------------------------------------------ */
 
-const typeNum = (arr) => {
-
-  let newArray = arr.filter( (value) => {
-
-    // Check if value is equal to a number, if true, return value
-    return typeof value === 'number';
-
+const typeNum = (arr) =>
+  arr.filter((element) => {
+    return !isNaN(element);
   });
-
-  return newArray;
-
-};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -48,18 +45,10 @@ Write a function named containsAnd that, given an array of strings as input, use
 For example, containsAnd(['panda', 'ran', 'and']) returns ['panda', 'and'].
 ------------------------------------------------------------------------------------------------ */
 
-const containsAnd = (arr) => {
-
-  let newArray = arr.filter( (string) => {
-
-    // Check for values which include 'and' and return the one that matches
+const containsAnd = (arr) =>
+  arr.filter((string) => {
     return string.includes('and');
-
   });
-
-  return newArray;
-
-};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -69,18 +58,10 @@ Write a function named oddValues that, given an array of integers as input, uses
 For example, oddValues([1,2,3]) returns [1,3].
 ------------------------------------------------------------------------------------------------ */
 
-const oddValues = (arr) => {
-
-  let newArray = arr.filter( (value) => {
-
-    // If value returns true (doesn't equal 0 after diving by two) return value
-    return value % 2 !== 0;
-
+const oddValues = (arr) =>
+  arr.filter((number) => {
+    return (number % 2); // return values with a remainder
   });
-
-  return newArray;
-
-};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -90,18 +71,10 @@ Write a function named notInFirstArray that, given two arrays as input, uses fil
 For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 ------------------------------------------------------------------------------------------------ */
 
-const notInFirstArray = (forbiddenValues, arr) => {
-
-  let newArray = arr.filter( (value) => {
-
-    // Check if values from arr are not '!' included in forbiddenValues array
-    return !forbiddenValues.includes(value);
-
+const notInFirstArray = (forbiddenValues, arr) =>
+  arr.filter((number) => {
+    return !forbiddenValues.includes(number);
   });
-
-  return newArray;
-
-};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6 - Stretch Goal
@@ -142,18 +115,10 @@ const snorlaxData = {
   weight: 4600,
 };
 
-const getBaseStatGreaterThan = (arr, minBaseStat) => {
-
-  let newArray = arr.filter( (stat) => {
-
-    // Return entire object if baseStat of object is greater than minBaseStat
-    return stat.baseStat > minBaseStat;
-
+const getBaseStatGreaterThan = (arr, minBaseStat) =>
+  arr.filter((stats) => {
+    return stats.baseStat > minBaseStat;
   });
-
-
-  return newArray;
-};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
@@ -164,20 +129,24 @@ For example, getStatName(snorlaxData.stats, 50) will return ['special-defense', 
 ------------------------------------------------------------------------------------------------ */
 
 const getStatName = (arr, minBaseStat) => {
-
-  // Store filtered states in filteredStats array using getBaseStatsGreatherThan function
-  let filteredStats = getBaseStatGreaterThan(arr, minBaseStat);
-
-  // Retrieve name of stats only from filteredStats array
-  let statNames = filteredStats.map ( (stat) => {
-
-    return stat.stat.name;
-
-  });
-
-
-  return statNames;
+  let baseStatsGreaterThan = getBaseStatGreaterThan(arr, minBaseStat);
+  return baseStatsGreaterThan.map((stat) => stat.stat.name);
 };
+//   {
+
+//   // Store filtered states in filteredStats array using getBaseStatsGreatherThan function
+//   let filteredStats = getBaseStatGreaterThan(arr, minBaseStat);
+
+//   // Retrieve name of stats only from filteredStats array
+//   let statNames = filteredStats.map ( (stat) => {
+
+//     return stat.stat.name;
+
+//   });
+
+
+//   return statNames;
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
@@ -228,20 +197,24 @@ const characters = [
   },
 ];
 
-const getCharactersWithoutChildren = (arr) => {
-
-
-  // Write a function named getCharactersWithoutChildren that, given the array of characters, below, uses filter to return an array of all characters without children.
-  let newArray = arr.filter( (character) => {
-
-    // Return all objects that do not have children (if !character.children evaluates to true)
+const getCharactersWithoutChildren = (arr) =>
+  arr.filter((character) => {
     return !character.children;
-
   });
+//   {
 
 
-  return newArray;
-};
+//   // Write a function named getCharactersWithoutChildren that, given the array of characters, below, uses filter to return an array of all characters without children.
+//   let newArray = arr.filter( (character) => {
+
+//     // Return all objects that do not have children (if !character.children evaluates to true)
+//     return !character.children;
+
+//   });
+
+
+//   return newArray;
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 9 - Stretch Goal
@@ -252,22 +225,29 @@ For example: evenOddNumericValues(['Gregor', 2, 4, 1]) returns ['even', 'even', 
 ------------------------------------------------------------------------------------------------ */
 
 const evenOddNumericValues = (arr) => {
-
-  let noStringArray = arr.filter( (value) => {
-
-    // Filter out and return values equal to a number into noStringArray
-    return typeof value === 'number';
-
+  let noStringArray = arr.filter((element) => {
+    return typeof element === 'number';
   });
 
-  let evenOddArray = noStringArray.map ( (value) => {
-
-    // Return even or odd strings according to numeric value from noStringArray
-    return value % 2 === 0 ? 'even' : 'odd';
-
+  return noStringArray.map((number) => {
+    return number % 2 === 0 ? 'even' : 'odd';
   });
 
-  return evenOddArray; // Return array of strings with even or odd
+  // let noStringArray = arr.filter( (value) => {
+
+  //   // Filter out and return values equal to a number into noStringArray
+  //   return typeof value === 'number';
+
+  // });
+
+  // let evenOddArray = noStringArray.map ( (value) => {
+
+  //   // Return even or odd strings according to numeric value from noStringArray
+  //   return value % 2 === 0 ? 'even' : 'odd';
+
+  // });
+
+  // return evenOddArray; // Return array of strings with even or odd
 };
 
 /* ------------------------------------------------------------------------------------------------
