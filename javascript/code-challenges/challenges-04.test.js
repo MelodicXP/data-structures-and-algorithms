@@ -13,22 +13,21 @@ HINT: Look at the tests to see how the callback functions are used.
 
 ------------------------------------------------------------------------------------------------ */
 
-function upper(str) {
-  return str.toUpperCase();
-}
+const upper = (str) => str.toUpperCase();
+// function upper(str) {
+//   return str.toUpperCase();
+// }
 
-function lower(str) {
-  return str.toLowerCase();
-}
+const lower = (str) => str.toLowerCase();
+// function lower(str) {
+//   return str.toLowerCase();
+// }
 
-const updateAnimal = (arr, callback) => {
-
-  return arr.map( (string) => {
+const updateAnimal = (arr, callback) =>
+  arr.map((string) => {
     return callback(string);
+  });
 
-  } );
-
-};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -38,12 +37,7 @@ Write a function called sortNames that takes an array of names and sorts them al
 For example: 'Cat' would come before 'apple'
 ------------------------------------------------------------------------------------------------ */
 
-const sortNames = (arr) => {
-
-  arr.sort();
-  return arr;
-
-};
+const sortNames = (arr) => arr.sort();
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -53,25 +47,23 @@ Write a function called sortNumbers that takes an array of numbers and sorts the
 HINT: Beware... JS default is "Lexical" ordering.
 ------------------------------------------------------------------------------------------------ */
 
-const sortNumbers = (arr) => {
+const sortNumbers = (arr) => arr.sort((a, b) => a - b);
+//     {
 
-  arr.sort( (a, b) => {
+//     if ( num1 < num2) {
+//       return true; // num1 comes before false
 
-    if ( a < b) {
-      return -1; // a comes before b
+//     } else if (num1 > num2) {
+//       return false; // b comes before a
 
-    } else if (a > b) {
-      return 1; // b comes before a
+//     } else {
+//       return 0; // leave as is
+//     }
 
-    } else {
-      return 0; // leave as is
+//   });
 
-    }
-
-  });
-
-  return arr;
-};
+//   return arr;
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -81,26 +73,27 @@ Write a function named sortBackwards that takes in an array of numbers and retur
 HINT: Do it with a custom sort callback, not with using `.reverse()`. ;)
 ------------------------------------------------------------------------------------------------ */
 
-const sortBackwards = (arr) => {
+const sortBackwards = (arr) => arr.sort((a, b) => b - a);
+//   {
 
-  arr.sort( (a, b) => {
+//   arr.sort( (a, b) => {
 
-    if ( a < b) {
-      return 1; // b come before a
+//     if ( a < b) {
+//       return 1; // b come before a
 
-    } else if (a > b) {
-      return -1; // a comes before b
+//     } else if (a > b) {
+//       return -1; // a comes before b
 
-    } else {
-      return 0; // leave as is
+//     } else {
+//       return 0; // leave as is
 
-    }
+//     }
 
-  });
+//   });
 
-  return arr;
+//   return arr;
 
-};
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -112,12 +105,7 @@ In this alphabetization, capital letters come before lower case letters.
 For example, ['Alphabet', 'Zebra', 'alphabet', 'carrot'] is correctly sorted.
 ------------------------------------------------------------------------------------------------ */
 
-const alphabetize = (arr) => {
-
-  arr.sort();
-  return arr;
-
-};
+const alphabetize = (arr) => arr.sort();
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -132,25 +120,30 @@ Here is an example of the input:
 ];
 ------------------------------------------------------------------------------------------------ */
 
-const sortByPrice = (arr) => {
-
-  arr.sort ( (a, b) => {
-
-    if ( a.price < b.price) {
-      return -1; // a comes before b
-
-    } else if (a.price > b.price) {
-      return 1; // b comes before a
-
-    } else {
-      return 0; // leave as is
-
-    }
-
+const sortByPrice = (arr) =>
+  arr.sort((a, b) => {
+    return a.price - b.price;
   });
 
-  return arr;
-};
+//   {
+
+//   arr.sort ( (a, b) => {
+
+//     if ( a.price < b.price) {
+//       return -1; // a comes before b
+
+//     } else if (a.price > b.price) {
+//       return 1; // b comes before a
+
+//     } else {
+//       return 0; // leave as is
+
+//     }
+
+//   });
+
+//   return arr;
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
@@ -160,30 +153,36 @@ Write a function named alphabetizeBetter that takes in an array of strings and r
 For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, and so is ['alphabet', 'Alphabet', 'carrot', 'Zebra'].
 ------------------------------------------------------------------------------------------------ */
 
-const alphabetizeBetter = (arr) => {
-
-  arr.sort ( (a, b) => {
-
-    // Lower case both a and b to compare regardless of capitlizations
-    let aLowerCase = a.toLowerCase();
-    let bLowerCase = b.toLowerCase();
-
-    if ( aLowerCase < bLowerCase) {
-      return -1; // a comes before b
-
-    } else if (aLowerCase > bLowerCase) {
-      return 1; // b comes before a
-
-    } else {
-      return 0; // leave as is
-
-    }
-
+const alphabetizeBetter = (arr) =>
+  arr.sort((a, b) => {
+    const upperA = a.toUpperCase();
+    const upperB = b.toUpperCase();
+    return upperA.localeCompare(upperB); // returns -1, 0, 1
   });
+//   {
 
-  return arr;
+//   arr.sort ( (a, b) => {
 
-};
+//     // Lower case both a and b to compare regardless of capitlizations
+//     let aLowerCase = a.toLowerCase();
+//     let bLowerCase = b.toLowerCase();
+
+//     if ( aLowerCase < bLowerCase) {
+//       return -1; // a comes before b
+
+//     } else if (aLowerCase > bLowerCase) {
+//       return 1; // b comes before a
+
+//     } else {
+//       return 0; // leave as is
+
+//     }
+
+//   });
+
+//   return arr;
+
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
@@ -191,26 +190,30 @@ CHALLENGE 8 - Stretch Goal
 Write a function named sortByLength that takes in an array of strings and returns the same array, with the strings sorted by their length, lowest to highest.
 ------------------------------------------------------------------------------------------------ */
 
-const sortByLength = (arr) => {
-
-  arr.sort ( (a, b) => {
-
-    if ( a.length < b.length) {
-      return -1; // a comes before b
-
-    } else if (a.length > b.length) {
-      return 1; // b comes before a
-
-    } else {
-      return 0; // leave as is
-
-    }
-
+const sortByLength = (arr) =>
+  arr.sort((a, b) => {
+    return a.length - b.length;
   });
+//   {
 
-  return arr;
+//   arr.sort ( (a, b) => {
 
-};
+//     if ( a.length < b.length) {
+//       return -1; // a comes before b
+
+//     } else if (a.length > b.length) {
+//       return 1; // b comes before a
+
+//     } else {
+//       return 0; // leave as is
+
+//     }
+
+//   });
+
+//   return arr;
+
+// };
 
 
 // [10, 2.8, 1, -47.75]
@@ -222,30 +225,36 @@ Write a function named sortNumbersByLength that takes in an array of numbers and
 For example, [1, 14, 0.2, -281, 54782] is only correctly sorted in that order.
 ------------------------------------------------------------------------------------------------ */
 
-const sortNumbersByLength = (arr) => {
-
-  arr.sort ( (a, b) => {
-
-    // Convert a and b to strings first in order to determine length of numbers
-    let aLength = String(a).length;
-    let bLength = String(b).length;
-
-    if ( aLength < bLength) {
-      return -1; // a comes before b
-
-    } else if (aLength > bLength) {
-      return 1; // b comes before a
-
-    } else {
-      return 0; // leave as is
-
-    }
-
+const sortNumbersByLength = (arr) =>
+  arr.sort((a, b) => {
+    const aLength = String(a).length;
+    const bLength = String(b).length;
+    return aLength - bLength;
   });
+//   {
 
-  return arr;
+//   arr.sort ( (a, b) => {
 
-};
+//     // Convert a and b to strings first in order to determine length of numbers
+//     let aLength = String(a).length;
+//     let bLength = String(b).length;
+
+//     if ( aLength < bLength) {
+//       return -1; // a comes before b
+
+//     } else if (aLength > bLength) {
+//       return 1; // b comes before a
+
+//     } else {
+//       return 0; // leave as is
+
+//     }
+
+//   });
+
+//   return arr;
+
+// };
 
 /*-----------------------------------------------------------------------------------------------
 CHALLENGE 10 - Stretch Goal
@@ -265,24 +274,28 @@ const people = [
   new Person('Stan', 'Seattle', 67),
 ];
 
-const sortPeople = (arr) => {
-  arr.sort( (a, b) => {
-
-    if ( a.lastName < b.lastName) {
-      return -1; // a comes before b
-
-    } else if (a.lastName > b.lastName) {
-      return 1; // b comes before a
-
-    } else {
-      return 0; // leave as is
-
-    }
-
+const sortPeople = (arr) =>
+  arr.sort((a, b) => {
+    return a.lastName.localeCompare(b.lastName);
   });
+//   {
+//   arr.sort( (a, b) => {
 
-  return arr;
-};
+//     if ( a.lastName < b.lastName) {
+//       return -1; // a comes before b
+
+//     } else if (a.lastName > b.lastName) {
+//       return 1; // b comes before a
+
+//     } else {
+//       return 0; // leave as is
+
+//     }
+
+//   });
+
+//   return arr;
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 11 - Stretch Goal
@@ -294,35 +307,52 @@ If two people share the same last name, alphabetize on their first name.
 If two people have the same full name, the younger one should come first. Do not worry about capitalization.
 ------------------------------------------------------------------------------------------------ */
 
-const sortPeopleBetter = (arr) => {
-  arr.sort ( (a, b) => {
-
-    if ( a.lastName < b.lastName) {
-      return -1; // a comes before b
-
-    } else if (a.lastName > b.lastName) {
-      return 1; // b comes before a
-
-    } else {
-
-      if (a.firstName < b.firstName) {
-        return -1; // a comes before b
-
-      } else if (a.firstName > b.firstName) {
-        return 1; // b comes before a
-
-      } else {
-        return a.age - b.age; // If returns a negative number a comes before b, if returns positive number, b comes before a, if equal to zero change nothing.
-
-      }
-
+const sortPeopleBetter = (arr) =>
+  arr.sort((a, b) => {
+    // Compare by last name first
+    let lastNameComparison = a.lastName.localeCompare(b.lastName);
+    if (lastNameComparison !== 0){
+      return lastNameComparison; // if different, use this comparison
     }
 
+    // Compare by first name if last names are the same
+    let firstNameComparison = a.firstName.localeCompare(b.firstName);
+    if (firstNameComparison !== 0) {
+      return firstNameComparison; // if different, use this comparison
+    }
+
+    // If both last name and first name are the same, compare by age (younger first)
+    return a.age - b.age;
   });
+//   {
+//   arr.sort ( (a, b) => {
 
-  return arr;
+//     if ( a.lastName < b.lastName) {
+//       return -1; // a comes before b
 
-};
+//     } else if (a.lastName > b.lastName) {
+//       return 1; // b comes before a
+
+//     } else {
+
+//       if (a.firstName < b.firstName) {
+//         return -1; // a comes before b
+
+//       } else if (a.firstName > b.firstName) {
+//         return 1; // b comes before a
+
+//       } else {
+//         return a.age - b.age; // If returns a negative number a comes before b, if returns positive number, b comes before a, if equal to zero change nothing.
+
+//       }
+
+//     }
+
+//   });
+
+//   return arr;
+
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 12 - Stretch Goal
@@ -346,48 +376,68 @@ const meetings = [
   new Meeting('Friday', '1200', '1345'),
 ];
 
-const sortMeetingsByDay = (arr) => {
+// Define a mapping of days of the week to numeric values for sorting
+const weekInOrder = {
+  Monday: 1,
+  Tuesday: 2,
+  Wednesday: 3,
+  Thursday: 4,
+  Friday: 5,
+  Saturday: 6,
+  Sunday: 7
+};
 
-  // Convert a, b (days of week from arr into numbers in order to compare and sort)
-  let weekInOrder = {
-    Monday: 1,
-    Tuesday: 2,
-    Wednesday: 3,
-    Thursday: 4,
-    Friday: 5,
-  };
-
-  arr.sort ( (a, b) => {
-
-    // Assign number to dayA and dayB variables based on .dayOfWeek from array
+const sortMeetingsByDay = (arr) =>
+  arr.sort((a, b) => {
+    // Get the numeric value for each day using the weekInOrder mapping
     let dayA = weekInOrder[a.dayOfWeek];
     let dayB = weekInOrder[b.dayOfWeek];
 
-    if ( dayA < dayB) {
-      return -1; // a comes before b
-
-    } else if (dayA > dayB) {
-      return 1; // b comes before a
-
-    } else {
-
-      if (a.start < b.start) { // sort by time
-        return -1;
-
-      } else if (a.start > b.start) {
-        return 1;
-
-      } else {
-        return 0;
-
-      }
-    }
-
+    // Sort meetings based on the numeric value of the day
+    return dayA - dayB;
   });
+//   {
 
-  return arr;
+//   // Convert a, b (days of week from arr into numbers in order to compare and sort)
+//   let weekInOrder = {
+//     Monday: 1,
+//     Tuesday: 2,
+//     Wednesday: 3,
+//     Thursday: 4,
+//     Friday: 5,
+//   };
 
-};
+//   arr.sort ( (a, b) => {
+
+//     // Assign number to dayA and dayB variables based on .dayOfWeek from array
+//     let dayA = weekInOrder[a.dayOfWeek];
+//     let dayB = weekInOrder[b.dayOfWeek];
+
+//     if ( dayA < dayB) {
+//       return -1; // a comes before b
+
+//     } else if (dayA > dayB) {
+//       return 1; // b comes before a
+
+//     } else {
+
+//       if (a.start < b.start) { // sort by time
+//         return -1;
+
+//       } else if (a.start > b.start) {
+//         return 1;
+
+//       } else {
+//         return 0;
+
+//       }
+//     }
+
+//   });
+
+//   return arr;
+
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 13 - Stretch Goal
@@ -399,48 +449,57 @@ Sort the meetings in the order that they start. If two meetings start at the sam
 You DO NOT need to use your solution to Challenge 12 in completing Challenge 13.
 ------------------------------------------------------------------------------------------------ */
 
-const sortSchedule = (arr) => {
-
-  // Convert a, b (days of week from arr into numbers in order to compare and sort)
-  let weekInOrder = {
-    Monday: 1,
-    Tuesday: 2,
-    Wednesday: 3,
-    Thursday: 4,
-    Friday: 5,
-  };
-
-  arr.sort ( (a, b) => {
-
-    // Assign number to dayA and dayB variables based on .dayOfWeek from array
+const sortSchedule = (arr) =>
+  arr.sort ((a, b) => {
+    // Assign numeric values to dayA and dayB based on weekInOrder
     let dayA = weekInOrder[a.dayOfWeek];
     let dayB = weekInOrder[b.dayOfWeek];
 
-    if ( dayA < dayB) {
-      return -1; // a comes before b
-
-    } else if (dayA > dayB) {
-      return 1; // b comes before a
-
-    } else {
-
-      if (a.start < b.start) { // sort by time
-        return -1;
-
-      } else if (a.start > b.start) {
-        return 1;
-
-      } else {
-        return a.end - a.start - (b.end - b.start); // compare, if returns negative, a comes before b, if returns positive b comes before a
-
-      }
+    // Check by day first
+    let dayComparison = dayA - dayB;
+    if (dayComparison !== 0) {
+      return dayComparison; // Sort based on the day of the week
     }
 
+    // Convert start times to numbers for comparison (are saved as strings in data)
+    let startA = parseInt(a.start, 10);
+    let startB = parseInt(b.start, 10);
+
+    // Check by start time if days are the same
+    if (startA !== startB) {
+      return startA - startB; // Sort based on start time
+    }
+
+    // If start time is the same, sort by duration (shorter meeting first)
+    let durationA = parseInt(a.end, 10) - startA;
+    let durationB = parseInt(b.end, 10) - startB;
+
+    return durationA - durationB; // Sort shorter duration first
   });
 
-  return arr;
+// if ( dayA < dayB) {
+//   return -1; // a comes before b
 
-};
+// } else if (dayA > dayB) {
+//   return 1; // b comes before a
+
+// } else {
+
+//   if (a.start < b.start) { // sort by time
+//     return -1;
+
+//   } else if (a.start > b.start) {
+//     return 1;
+
+//   } else {
+//     return a.end - a.start - (b.end - b.start); // compare, if returns negative, a comes before b, if returns positive b comes before a
+
+//   }
+// }
+
+// });
+
+// return arr;
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
