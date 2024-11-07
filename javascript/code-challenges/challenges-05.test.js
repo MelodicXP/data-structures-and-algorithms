@@ -11,13 +11,17 @@ should convert to ["Jane Doe", "James Bond"]
 Note the space in between first and last names.
 You can assume that neither firstName nor lastName will be blank
 ------------------------------------------------------------------------------------------------ */
-const toLastNames = people => {
-
-  return people.map( (person) => {
+const toLastNames = people =>
+  people.map((person) => {
     return `${person.firstName} ${person.lastName}`;
-
   });
-};
+//   {
+
+//   return people.map( (person) => {
+//     return `${person.firstName} ${person.lastName}`;
+
+//   });
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -26,9 +30,10 @@ Write a function named addValues that, given an array of numbers as input, uses 
 
 ------------------------------------------------------------------------------------------------ */
 
-const addValues = (arr) => {
-  return arr.reduce( (acc, number) => acc + number, 0 );
-};
+const addValues = (arr) =>
+  arr.reduce((acc, number) => {
+    return acc + number;
+  }, 0);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -42,9 +47,13 @@ Write a function named addPurchases that, given an array of objects as input, us
 
 ------------------------------------------------------------------------------------------------ */
 
-const addPurchases = (arr) => {
-  return arr.reduce ( (acc, product) => acc + product.purchasePrice, 0 );
-};
+const addPurchases = (arr) =>
+  arr.reduce((totalAmountPurchased, item) => {
+    return totalAmountPurchased += item.purchasePrice;
+  }, 0);
+//   {
+//   return arr.reduce ( (acc, product) => acc + product.purchasePrice, 0 );
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -54,9 +63,13 @@ Write a function named countNumberOfElements that, given an array as input, uses
 Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
-const countNumberOfElements = (arr) => {
-  return arr.reduce ( (acc) => acc + 1, 0 ); // Second argument no required as simply adds to acc when going through array
-};
+const countNumberOfElements = (arr) =>
+  arr.reduce((numElements) => {
+    return numElements += 1;
+  }, 0);
+// {
+//   return arr.reduce ( (acc) => acc + 1, 0 ); // Second argument no required as simply adds to acc when going through array
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -114,14 +127,20 @@ let starWarsData = [{
   gender: 'female'
 }];
 
-const returnNames = (arr) => {
+const returnNames = (arr) =>
+  arr.reduce((characterNames, character) => {
+    characterNames.push(character.name);
+    return characterNames;
+  }, []);
 
-  return arr.reduce((acc, character) => {
-    acc.push(character.name); // push character name to empty array
-    return acc;
-  }, []); // Acc is initialized as an empty array
+// {
 
-};
+//   return arr.reduce((acc, character) => {
+//     acc.push(character.name); // push character name to empty array
+//     return acc;
+//   }, []); // Acc is initialized as an empty array
+
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -132,12 +151,20 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (str) => {
+  let charactersArray = str.split(''); // convert string to array
 
-  let stringToArrayOfCharacters = Array.from(str); // Convert string to array of characters
-
-  return stringToArrayOfCharacters.reduce ((acc, char) => `${char}${acc}`, ''); // Concatenate with acc placed after char
+  return charactersArray.reduce((reversedString, character) => {
+    return character + reversedString;
+  }, '');
 
 };
+// {
+
+//   let stringToArrayOfCharacters = Array.from(str); // Convert string to array of characters
+
+//   return stringToArrayOfCharacters.reduce ((acc, char) => `${char}${acc}`, ''); // Concatenate with acc placed after char
+
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
@@ -188,10 +215,16 @@ const characters = [
   },
 ];
 
-const countNumberOfChildren = (arr) => {
-  // Check if character has children, if so add length of children array to acc.
-  return arr.reduce ( (acc, character) => acc + (character.children ? character.children.length : 0), 0);
-};
+const countNumberOfChildren = (arr) =>
+  arr.reduce((totalNumOfChildren, character) => {
+    // Check if character has children property
+    let characterNumOfChildren = character.children ? character.children.length : 0;
+    return totalNumOfChildren + characterNumOfChildren;
+  }, 0);
+// {
+//   // Check if character has children, if so add length of children array to acc.
+//   return arr.reduce ( (acc, character) => acc + (character.children ? character.children.length : 0), 0);
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
@@ -202,18 +235,42 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 ------------------------------------------------------------------------------------------------ */
 
 const calculateAverage = (arr) => {
+  let averageValueOfArray = 0;
+  let totalSumAndCount = {};
 
-  let accArray = arr.reduce( (acc, number) => { // Assign value of accumulated count and sum to acc
+  totalSumAndCount = arr.reduce((acc, number) => {
+    acc.sum += number;
+    acc.count += 1;
+    return acc;
+  }, {count: 0, sum: 0});
 
-    acc.sum += number; // Increment sum
-    acc.count++; // Increment count
-    return acc; // Return acc object containing totals
-
-  }, { count: 0, sum: 0} ); // Initialized acc as an ojbect containig counter and sum
-
-  return accArray.sum / accArray.count; // Return sum divided by count
-
+  averageValueOfArray = totalSumAndCount.sum / totalSumAndCount.count;
+  return averageValueOfArray;
 };
+
+// {
+//   let averageValueOfArray = 0;
+
+//   let totalAllNumbers = arr.reduce((total, number) => {
+//     return total + number;
+//   }, 0);
+
+//   averageValueOfArray = totalAllNumbers / arr.length;
+//   return averageValueOfArray;
+// };
+// {
+
+//   let accArray = arr.reduce( (acc, number) => { // Assign value of accumulated count and sum to acc
+
+//     acc.sum += number; // Increment sum
+//     acc.count++; // Increment count
+//     return acc; // Return acc object containing totals
+
+//   }, { count: 0, sum: 0} ); // Initialized acc as an ojbect containig counter and sum
+
+//   return accArray.sum / accArray.count; // Return sum divided by count
+
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 9 - Stretch Goal
@@ -232,21 +289,28 @@ const isPrime = (value) => {
   return value > 1;
 };
 
-const countPrimeNumbers = (arr) => {
-
-  let primeNumArray = arr.reduce((acc, number) => {
-
-    // Push the prime number to the accumulator if is prime
+const countPrimeNumbers = (arr) =>
+  arr.reduce((primes, number) => {
     if (isPrime(number)) {
-      acc.push(number);
+      primes.push(number);
     }
+    return primes;
+  }, []).length; // return length of array containing primes
+// {
 
-    return acc;
+//   let primeNumArray = arr.reduce((acc, number) => {
 
-  }, []);
+//     // Push the prime number to the accumulator if is prime
+//     if (isPrime(number)) {
+//       acc.push(number);
+//     }
 
-  return primeNumArray.length; // return length of array containing prime number
-};
+//     return acc;
+
+//   }, []);
+
+//   return primeNumArray.length; // return length of array containing prime number
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 10 - Stretch Goal
@@ -286,16 +350,22 @@ const snorlaxData = {
   weight: 4600,
 };
 
-const extractStats = (snorlaxData) => {
+const extractStats = (snorlaxData) =>
+  snorlaxData.stats.reduce((stats, ability) => {
+    stats[ability.stat.name] = ability.baseStat; // Set key value pairs in object by name and baseStat
+    return stats;
+  }, {});
 
-  return snorlaxData.stats.reduce ( (acc, stat) => {
+// {
 
-    acc[stat.stat.name] = stat.baseStat; // Use stat name as key and baseStat as the value
-    return acc;
+//   return snorlaxData.stats.reduce ( (acc, stat) => {
 
-  }, {} );
+//     acc[stat.stat.name] = stat.baseStat; // Use stat name as key and baseStat as the value
+//     return acc;
 
-};
+//   }, {} );
+
+// };
 
 // Expected output {'speed': 30, 'special-defense': 110, 'special-attack': 65}
 
@@ -310,22 +380,23 @@ Write a function named extractChildren that, given the array of characters from 
 ------------------------------------------------------------------------------------------------ */
 
 const extractChildren = (arr) => {
+  let characterNamesContainingLetterA = [];
+  let childrenNamesArray = [];
 
   // Convert to lower case, make case insenstive, return strings with letter 'a;
-  let filteredArray = arr.filter( (character) => {
+  characterNamesContainingLetterA = arr.filter((character) => {
     return character.name.toLowerCase().includes('a');
   });
 
   // Check if chacter has children property, if true, push children individually using spread operator '...'
-  return filteredArray.reduce( (acc, character) => {
-
+  childrenNamesArray = characterNamesContainingLetterA.reduce((childrenNames, character) => {
     if (character.children) {
-      acc.push(...character.children);
+      childrenNames.push(...character.children);
     }
+    return childrenNames;
+  }, []);
 
-    return acc;
-  }, [] );
-
+  return childrenNamesArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
