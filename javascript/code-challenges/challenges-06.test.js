@@ -22,16 +22,26 @@ For example:
 Returns: ['dyoll', 'eimaj'];
 ------------------------------------------------------------------------------------------------ */
 
-const getNames = (arr) => {
+const getNames = (arr) =>
+  arr.map((person) => {
+    let stringToArray = person.name.split(''); // Split string into array of characters
 
-  return arr.map( (person) => {
+    let nameReversed = stringToArray.reduce((reversedString, char) => { // Reverse array using reduce
+      return char + reversedString;
+    }, '');
 
-    // Convert string to an array of individual letters, and reverse using reduce ()
-    return Array.from(person.name).reduce((acc, char) => `${char}${acc}`, '');
-
+    return nameReversed;
   });
+// {
 
-};
+//   return arr.map( (person) => {
+
+//     // Convert string to an array of individual letters, and reverse using reduce ()
+//     return Array.from(person.name).reduce((acc, char) => `${char}${acc}`, '');
+
+//   });
+
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -40,11 +50,12 @@ Write a function that appends ' The end.' to a string, and returns the modified 
 
 ------------------------------------------------------------------------------------------------ */
 
-const appendTheEnd = (str) => {
+const appendTheEnd = (str) => str + ' The end.';
+// {
 
-  return str + ' The end.';
+//   return str + ' The end.';
 
-};
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -59,15 +70,16 @@ appendFirstToLast(a);
 console.log(a) prints [1, 2, 3, 1]
 ------------------------------------------------------------------------------------------------ */
 
-const appendFirstToLast = (arr) => {
-  if (arr.length > 0) {
+const appendFirstToLast = (arr) => arr.push(arr[0]);
+// {
+//   if (arr.length > 0) {
 
-    let firstElem = arr[0]; // Identify first element
+//     let firstElem = arr[0]; // Identify first element
 
-    arr.push(firstElem); // Push first element to end of array
+//     arr.push(firstElem); // Push first element to end of array
 
-  }
-};
+//   }
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -85,10 +97,8 @@ console.log(a) prints { fullName: 'Octavia Estelle Butler', yearBorn: 1947 }
 ------------------------------------------------------------------------------------------------ */
 
 const addBirthYearProperty = (obj, year) => {
-
   // If object has no yearBorn property, add yearBorn prop with value of year
-  obj.yearBorn ? null : (obj.yearBorn = year);
-
+  !obj.yearBorn ? obj['yearBorn'] = year : null;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -105,13 +115,19 @@ console.log(people[1].isAuthor) prints true
 ------------------------------------------------------------------------------------------------ */
 
 const setStatusAsAuthor = (people) => {
-
-  // Loop through array, and check if each object element has prop of isAuthor, if not add isAuthor equal to true
-  people.forEach( (person) => {
-    person.isAuthor ? null : (person.isAuthor = true);
+  people.forEach((person) => {
+    !person.isAuthor ? person['isAuthor'] = true : null;
+    return person;
   });
-
 };
+// {
+
+//   // Loop through array, and check if each object element has prop of isAuthor, if not add isAuthor equal to true
+//   people.forEach( (person) => {
+//     person.isAuthor ? null : (person.isAuthor = true);
+//   });
+
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6 - Stretch Goal
@@ -129,12 +145,11 @@ console.log(a) prints [1, 2, 3, 4]
 ------------------------------------------------------------------------------------------------ */
 
 const append = (arr1, arr2) => {
-
-  arr2.forEach( (element) => {
+  arr2.forEach((element) => {
     arr1.push(element);
   });
-
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
