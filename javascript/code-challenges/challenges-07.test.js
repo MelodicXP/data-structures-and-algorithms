@@ -24,26 +24,30 @@ let starWarsPeople = [
   }
 ];
 
-const sortStarWarsCharacters = (starWarsArr) => {
-
-  starWarsArr.sort( (a, b) => {
-
-    // Convert height from string to integer first in order to compare
-    if ( parseInt(a.height) > parseInt(b.height) ) {
-      return -1; // a comes before b
-
-    } else if ( parseInt(a.height) < parseInt(b.height) ) {
-      return 1; // b comes before a
-
-    } else {
-      return 0; // leave as is
-
-    }
-
+const sortStarWarsCharacters = (starWarsCharacters) =>
+  starWarsCharacters.sort((characterA, characterB) => {
+    return characterB.height - characterA.height;
   });
+// {
 
-  return starWarsArr;
-};
+//   starWarsArr.sort((a, b) => {
+
+//     // Convert height from string to integer first in order to compare
+//     if ( parseInt(a.height) > parseInt(b.height) ) {
+//       return -1; // a comes before b
+
+//     } else if ( parseInt(a.height) < parseInt(b.height) ) {
+//       return 1; // b comes before a
+
+//     } else {
+//       return 0; // leave as is
+
+//     }
+
+//   });
+
+//   return starWarsArr;
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -52,7 +56,7 @@ Write a function named removeThree that takes an index and an array. The functio
 ------------------------------------------------------------------------------------------------ */
 
 const removeThree = (idx, arr) => {
-  arr.splice(idx, 3);
+  arr.splice(idx, 3); // removes (and returns if desired) 3 elements removed from array
   return arr; // return modified array after splicing
 };
 
@@ -62,10 +66,12 @@ CHALLENGE 3
 Write a function named joinArray that takes an array and joins all of the elements together in one string on a space.
 ------------------------------------------------------------------------------------------------ */
 
-const joinArray = (arr) => {
-  let mergedArr = arr.join(' ');
-  return mergedArr;
-};
+const joinArray = (arr) => arr.join(' ');
+
+// {
+//   let mergedArr = arr.join(' ');
+//   return mergedArr;
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -81,15 +87,27 @@ For example, if the input is 'Welcome', the output will be:
 ------------------------------------------------------------------------------------------------ */
 
 const howMuchPencil = (str) => {
-  let result = [str]; // assign str as first element in result array
+  let newArray = [];
 
-  // While length of string > 0, slice off first element and push rest of string into result array
-  while (str.length > 0) {
-    str = str.slice(1);
-    result.push(str);
+  // Loop through each index from 0 to str.length
+  for (let i = 0; i <= str.length; i++) {
+    // Use slice starting from index `i` to get each substring
+    newArray.push(str.slice(i));
   }
-  return result;
+
+  return newArray;
 };
+
+// {
+//   let result = [str]; // assign str as first element in result array
+
+//   // While length of string > 0, slice off first element and push rest of string into result array
+//   while (str.length > 0) {
+//     str = str.slice(1);
+//     result.push(str);
+//   }
+//   return result;
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -99,9 +117,7 @@ Write a function name wordsToCharList that, given a string as input, returns a n
 For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 ------------------------------------------------------------------------------------------------ */
 
-const wordsToCharList = (str) => {
-  return str.split('');
-};
+const wordsToCharList = (str) => str.split('');
 
 
 /* ------------------------------------------------------------------------------------------------
@@ -144,23 +160,18 @@ const gruffaloCrumble = {
   ]
 };
 
-
-const listFoods = (recipe) => {
-  let result = [];
-
-  let ingredients = recipe.ingredients; // Retrieve ingredients array from recipe
-
+const listFoods = (recipe) =>
   // Return a new array with only ingredient words, without amounts or units
-  result = ingredients.map( (ingredient) => {
+  recipe.ingredients.map((ingredient) => {
+    // Find the first and second spaces
+    let firstSpaceIndex = ingredient.indexOf(' ');
+    let secondSpaceIndex = ingredient.indexOf(' ', firstSpaceIndex + 1);
 
-    let firstSpaceIndex = ingredient.indexOf(' '); // Find first space in array
-    let secondSpaceIndex = ingredient.indexOf(' ', firstSpaceIndex + 1); // Find second space in array after first space
-    return ingredient.slice(secondSpaceIndex + 1); // Extract words after the second space from array
-
+    // If there's no second space, return from first space
+    return secondSpaceIndex !== -1
+      ? ingredient.slice(secondSpaceIndex + 1)
+      : ingredient.slice(firstSpaceIndex + 1);
   });
-
-  return result;
-};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
@@ -170,22 +181,27 @@ Write a function named splitFoods that uses split to produce the same output as 
 You may also use other string or array methods.
 ------------------------------------------------------------------------------------------------ */
 
-const splitFoods = (recipe) => {
-  let result = [];
+const splitFoods = (recipe) => recipe.ingredients.map((ingredient) => {
+  let splitString = ingredient.split(' ');
+  let foodName = splitString.slice(2).join(' '); // remove first two elements, and join into one word
+  return foodName;
+});
+//   {
+//   let result = [];
 
-  let ingredients = recipe.ingredients;
+//   let ingredients = recipe.ingredients;
 
-  ingredients.forEach( ( ingredient) => {
+//   ingredients.forEach( ( ingredient) => {
 
-    let splitWords = ingredient.split(' '); // Split words
-    let foodWord = splitWords.slice(2); // Slice off first two elements/words so only food words left
-    let joinedFoodWord = foodWord.join(' '); // Join food words together
-    result.push(joinedFoodWord); // Push joined food word to result array
+//     let splitWords = ingredient.split(' '); // Split words
+//     let foodWord = splitWords.slice(2); // Slice off first two elements/words so only food words left
+//     let joinedFoodWord = foodWord.join(' '); // Join food words together
+//     result.push(joinedFoodWord); // Push joined food word to result array
 
-  });
+//   });
 
-  return result;
-};
+//   return result;
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
@@ -197,21 +213,28 @@ Write a function named stepAction that takes in the recipe and extracts the acti
 Return a new array containing just the verbs. For example, ['Mix until evenly distributed'] returns ['Mix'].
 ------------------------------------------------------------------------------------------------ */
 
-const stepActions = (recipe) => {
-  let result = [];
-
-  let steps = recipe.steps;
-
-  steps.forEach( (step) => {
-
-    let splitWords  = step.split(' ');
-    let actionWord = splitWords[0];
-    result.push(actionWord);
-
+const stepActions = (recipe) =>
+  recipe.steps.map((step) => {
+    let splitStep = step.split(' ');
+    let actionStep = splitStep[0];
+    return actionStep;
   });
 
-  return result;
-};
+// {
+//   let result = [];
+
+//   let steps = recipe.steps;
+
+//   steps.forEach( (step) => {
+
+//     let splitWords  = step.split(' ');
+//     let actionWord = splitWords[0];
+//     result.push(actionWord);
+
+//   });
+
+//   return result;
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 9 - Stretch Goal
@@ -227,18 +250,24 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const removeEvenValues = (arr) => {
-
   // Loop through array in reverse due to index shift in each iteration
-  for ( let i = arr.length - 1; i >= 0; i --) {
-
-    if ( arr[i] % 2 === 0 ) {
-
+  for (let i = arr.length - 1; i >= 0; i--) {
+    if (arr[i] % 2 === 0) {
       arr.splice(i, 1);
-
     }
   }
-
 };
+// {
+
+//   for ( let i = arr.length - 1; i >= 0; i --) {
+
+//     if ( arr[i] % 2 === 0 ) {
+
+//       arr.splice(i, 1);
+
+//     }
+//   }
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 10 - Stretch Goal
@@ -256,22 +285,18 @@ removeLastCharacters('Gregor', 9) returns ''
 ------------------------------------------------------------------------------------------------ */
 
 const removeLastCharacters = (str, numberOfCharacters) => {
-
-  let modifiedString = '';
-
-  if ( numberOfCharacters <= 0 ) {
+  // If the number of characters to remove is negative, return the original string
+  if (numberOfCharacters < 0) {
     return str;
-
-  } else if ( numberOfCharacters > str.length ) {
-    return modifiedString;
-
-  } else {
-    modifiedString = str.slice(0, -numberOfCharacters);
-
   }
 
-  return modifiedString;
+  // If the number of characters to remove is greater than the string length, return an empty string
+  if (numberOfCharacters >= str.length) {
+    return '';
+  }
 
+  // Otherwise, slice the string to remove the last 'numberOfCharacters' characters
+  return str.slice(0, str.length - numberOfCharacters);
 };
 
 
@@ -282,25 +307,36 @@ Write a function named totalSumCSV that, given a string of comma-separated value
 ------------------------------------------------------------------------------------------------ */
 
 const totalSumCSV = (str) => {
-  let total = 0;
-  let values = str.split(','); // split string at commas
+  let splitString = str.split(','); // split string into array
 
-  total = values.reduce( (acc, value) => {
+  let numbersArray = splitString.map((value) => parseInt(value)); // convert values into integers
 
-    let stringToNum = parseInt(value); // Convert to number type
-
-    if ( !isNaN (stringToNum) ) { // If is a number add to accumulator
-
-      return acc + stringToNum;
-
-    }
-
-    return acc;
-
+  // Loop through array and return total
+  return numbersArray.reduce((total, number) => {
+    total += number;
+    return total;
   }, 0);
-
-  return total;
 };
+// {
+//   let total = 0;
+//   let values = str.split(','); // split string at commas
+
+//   total = values.reduce( (acc, value) => {
+
+//     let stringToNum = parseInt(value); // Convert to number type
+
+//     if ( !isNaN (stringToNum) ) { // If is a number add to accumulator
+
+//       return acc + stringToNum;
+
+//     }
+
+//     return acc;
+
+//   }, 0);
+
+//   return total;
+// };
 
 
 /* ------------------------------------------------------------------------------------------------
@@ -312,15 +348,35 @@ For example, removeVowels('gregor') returns 'grgr'.
 ------------------------------------------------------------------------------------------------ */
 
 const removeVowels = (str) => {
-
-  let characters = str.split(''); // Convert string to array of character
-
-  // Filter consonants out, join as a new string of consonants
-  let consonants = characters.filter( (letter) => !['a', 'e', 'i', 'o', 'u'].includes(letter)).join('');
-
-  return consonants;
-
+  const vowels = ['a', 'e', 'i', 'o', 'u'];
+  return str
+    .split('') // split into array
+    .filter((character) => !vowels.includes(character)) // filter out letters that are not vowels
+    .join(''); // join remaining characters into one word
 };
+
+// {
+//   let stringArray = str.split('');
+//   let vowels = ['a', 'e', 'i', 'o', 'u'];
+
+//   return stringArray.reduce((stringWithoutVowel, character) => {
+//     if (!vowels.includes(character)) {
+//       stringWithoutVowel += character;
+//     }
+//     return stringWithoutVowel;
+//   }, '');
+// };
+
+// {
+
+//   let characters = str.split(''); // Convert string to array of character
+
+//   // Filter consonants out, join as a new string of consonants
+//   let consonants = characters.filter( (letter) => !['a', 'e', 'i', 'o', 'u'].includes(letter)).join('');
+
+//   return consonants;
+
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 13 - Stretch Goal
@@ -334,14 +390,18 @@ Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioo
 
 const extractVowels = (str) => {
 
-  let characters = str.split(''); // Convert string to an array of characters
+  let stringWithoutVowels = removeVowels(str); // use function from prior challenge
+  console.log('String without vowels: ', stringWithoutVowels);
 
-  let consonants = characters.filter((letter) => !['a', 'e', 'i', 'o', 'u'].includes(letter)).join('');
+  const vowels = ['a', 'e', 'i', 'o', 'u'];
 
-  // Filter vowels out, sort alphabetically, join as string of vowels
-  let vowels = characters.filter((letter) => ['a', 'e', 'i', 'o', 'u'].includes(letter)).sort().join('');
+  const vowelsRemovedInOrder = str
+    .split('') // split as array
+    .filter((character) => vowels.includes(character)) // filter out vowels
+    .sort() // sort in alphabetical order
+    .join(''); // join as single string
 
-  return [consonants, vowels];
+  return [stringWithoutVowels, vowelsRemovedInOrder];
 
 };
 
